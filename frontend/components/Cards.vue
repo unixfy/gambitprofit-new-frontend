@@ -52,7 +52,7 @@
                       block
                       color="primary"
                       elevation="4"
-                      small
+                      large
                       @click="setTokens"
                     >
                       Save
