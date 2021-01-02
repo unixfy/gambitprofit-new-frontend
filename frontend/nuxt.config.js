@@ -18,7 +18,7 @@ export default {
       { hid: 'description', name: 'description', content: 'The easy way to profit from Gambit Rewards!' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
+      { rel: 'icon', type: 'image/x-icon', href: '/logo.png' }
     ]
   },
 
@@ -50,6 +50,25 @@ export default {
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
   ],
+
+  // PWA
+  pwa: {
+    icon: {
+      source: "/logo.png",
+      fileName: 'logo.png'
+    },
+    meta: {
+      name: "GambitProfit",
+      description: "The easy way to profit from Gambit Rewards!",
+      ogHost: "https://gambitprofit.com",
+      ogImage: true,
+    },
+    manifest: {
+      name: 'GambitProfit',
+      short_name: 'GambitProfit',
+      description: "The easy way to profit from Gambit Rewards!"
+    },
+  },
 
   // Strapi module config
   strapi: {
