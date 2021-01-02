@@ -12,8 +12,8 @@
       <v-card-text>
         <v-alert
           prominent
-          type="error"
           transition="scale-transition"
+          type="error"
         >
           <h3 v-if="error.statusCode === 404">
             {{ pageNotFound }}
@@ -24,13 +24,16 @@
           <h3 v-else>
             {{ otherError }}
           </h3>
+          <span v-else>
+            Try refreshing the page.
+          </span>
         </v-alert>
       </v-card-text>
       <v-card-actions>
         <v-btn
+          color="blue"
           outlined
           text
-          color="blue"
           to="/"
         >
           Return home

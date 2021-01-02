@@ -18,7 +18,7 @@ export default {
       { hid: 'description', name: 'description', content: 'The easy way to profit from Gambit Rewards!' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: '/icon.png' }
     ]
   },
 

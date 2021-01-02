@@ -2,18 +2,18 @@
   <v-card>
     <v-navigation-drawer
       v-model="drawer"
+      app
       clipped
       fixed
-      app
     >
       <v-list>
         <v-list-item
           v-for="(item, i) in items"
           :key="i"
-          :to="item.to"
-          router
-          exact
           :href="item.href"
+          :to="item.to"
+          exact
+          router
         >
           <v-list-item-action>
             <v-icon>{{ item.icon }}</v-icon>
@@ -25,24 +25,32 @@
       </v-list>
     </v-navigation-drawer>
     <v-app-bar
+      app
       clipped-left
       fixed
-      app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-img
-        src="/vuetify-logo.svg"
-        max-width="30"
-        max-height="30"
-        contain
         class="mx-2"
+        contain
+        max-height="30"
+        max-width="30"
+        src="/logo.svg"
       >
       </v-img>
-      <v-app-bar-title v-text="title"/>
+      <ClientOnly>
+        <v-app-bar-title v-text="title"/>
+      </ClientOnly>
       <v-spacer></v-spacer>
-      <v-btn @click="toggleTheme"><v-icon>mdi-brightness-6</v-icon></v-btn>
-
-
+      <v-tooltip left>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on" icon
+                 @click="toggleTheme">
+            <v-icon>mdi-brightness-6</v-icon>
+          </v-btn>
+        </template>
+        Toggle dark mode
+      </v-tooltip>
     </v-app-bar>
   </v-card>
 </template>
@@ -51,7 +59,8 @@
 export default {
   data() {
     return {
-      drawer: true,
+      // note: enabling this will make the drawer automatically open on mobile AND desktop - default is only open on desktop
+      drawer: false,
       items: [
         {
           icon: 'mdi-home',
@@ -97,7 +106,7 @@ export default {
   methods: {
     // Function to toggle darkmode and save the state in localStorage
     toggleTheme() {
-      this.$vuetify.theme.dark=!this.$vuetify.theme.dark;
+      this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
       localStorage.setItem("isDarkThemeActive", this.$vuetify.theme.dark.toString())
     }
   }

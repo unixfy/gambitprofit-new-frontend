@@ -3,7 +3,7 @@
     <v-parallax
       height="200"
       dark
-      src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg"
+      src="/bg.png"
     >
       <v-row
         align="center"
@@ -25,7 +25,7 @@
 
     <span class="my-4"></span>
 
-    <v-card>
+    <v-card flat outlined>
       <v-card-title>Latest Gambit Plays</v-card-title>
       <v-card-subtitle>Data is retrieved from our API.</v-card-subtitle>
       <v-card-text>

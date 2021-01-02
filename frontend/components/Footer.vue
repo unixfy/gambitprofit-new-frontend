@@ -14,7 +14,7 @@
       <v-card-text class="teal white--text py-5 text-center">
         &copy; 2020-{{ new Date().getFullYear() }} <strong>GambitProfit</strong> - Made with
         <v-icon class="red--text">mdi-heart</v-icon>
-        by Unixfy.
+        by <a href="https://unixfy.net" target="_blank" rel="noopener" style="color:white;">Unixfy</a>.
         <br/>
         Proudly powered by <a href="https://nuxtjs.org" target="_blank" rel="noopener" style="color:white;">Nuxt.js</a> and <a
         href="https://strapi.io" target="_blank" rel="noopener" style="color:white;">Strapi</a>.
