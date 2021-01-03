@@ -2,7 +2,7 @@
   <ClientOnly>
     <div>
       <!-- Configuration UI -->
-      <v-card :loading="preload" class="mb-4" elevation="5">
+      <v-card class="mb-4" elevation="5">
         <v-card-title>
           Settings
           <v-spacer></v-spacer>
@@ -28,26 +28,46 @@
                 <v-card-text>
                   <!--                  This form will be disabled if the rules are not met -->
                   <v-form v-model="tokens_form_valid">
-                    <v-slider
+                    <v-text-field
                       v-model="tokens"
-                      :max="max_tokens"
-                      :min="min_tokens"
+                      :loading="preload"
                       :rules="tokens_field_rules"
-                      class="align-center mt-0 pt-0"
-                      aria-label="Token Amount Slider"
-                      aria-input-field-name="slider"
+                      aria-label="Token Amount"
+                      class="mt-0 pt-0"
+                      dense
+                      hide-details="auto"
+                      label="Token Amount"
+                      outlined
+                      single-line
+                      suffix="tokens"
+                      type="number"
                     >
-                      <template v-slot:append>
-                        <v-text-field
-                          v-model="tokens"
-                          :rules="tokens_field_rules"
-                          class="mt-0 pt-0"
-                          single-line
-                          type="number"
-                          aria-label="Token Amount"
-                        ></v-text-field>
-                      </template>
-                    </v-slider>
+                    </v-text-field>
+
+                    <v-btn-toggle
+                      v-model="tokens"
+                      style="width:100%;"
+                      :disabled="preload"
+                      dense
+                      class="my-3"
+                      color="primary"
+                    >
+                      <v-btn value="1000">
+                        1000
+                      </v-btn>
+
+                      <v-btn value="2500">
+                        2500
+                      </v-btn>
+
+                      <v-btn value="5000">
+                        5000
+                      </v-btn>
+
+                      <v-btn value="10000">
+                        10000
+                      </v-btn>
+                    </v-btn-toggle>
 
                     <v-btn
                       :disabled="!tokens_form_valid"
@@ -75,20 +95,21 @@
                   <v-form onSubmit="return false;" @submit="loadData"
                   >
                     <v-text-field
+                      v-model="search_term"
                       :loading="preload"
                       append-icon="mdi-magnify"
                       class="mt-0 pt-0"
                       clearable
                       dense
-                      label="Search..."
+                      label="Search by name/URL"
                       outlined
                       @click:append="loadData"
                       @click:clear="loadData"
-                      v-model="search_term"
                     >
                     </v-text-field>
                   </v-form>
 
+                  <p>Sort by:</p>
                   <v-btn-toggle
                     v-model="sort_by"
                     color="primary"
@@ -96,17 +117,18 @@
                     elevation="4"
                     mandatory
                   >
+
                     <v-btn
                       :loading="preload"
                       @click="loadData"
                     >
-                      Sort by date
+                      Date
                     </v-btn>
                     <v-btn
                       :loading="preload"
                       @click="loadData"
                     >
-                      Sort by no-risk profit
+                      Profit
                     </v-btn>
                   </v-btn-toggle>
 
@@ -169,7 +191,7 @@ import moment from 'moment'
 import Fuse from 'fuse.js'
 
 export default {
-  name: 'Table',
+  name: 'Cards',
   component: true,
   data() {
     return {
@@ -179,8 +201,8 @@ export default {
       preload: true,
       // Init tokens amount as 1 and it will be set later from the localstorage
       tokens: 1,
-      // Whether all plays are shown
-      show_all: false,
+      // Whether all plays are shown by default
+      show_all: true,
       // Init form validation
       tokens_form_valid: false,
 
