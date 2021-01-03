@@ -105,6 +105,7 @@
                       outlined
                       @click:append="loadData"
                       @click:clear="loadData"
+                      hide-details="auto"
                     >
                     </v-text-field>
                   </v-form>
