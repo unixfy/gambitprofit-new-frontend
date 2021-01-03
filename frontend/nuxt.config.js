@@ -61,7 +61,7 @@ export default {
     meta: {
       name: "GambitProfit",
       description: "The easy way to profit from Gambit Rewards!",
-      ogHost: "https://gambitprofit.com",
+      ogHost: "https://gambitprofit.netlify.app",
       ogImage: true,
     },
     manifest: {

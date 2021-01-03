@@ -80,6 +80,7 @@
                       label="Search..."
                       outlined
                       @click:append="loadData"
+                      @click:clear="loadData"
                       v-model="search_term"
                     >
                     </v-text-field>
@@ -140,9 +141,10 @@
       </div>
 
       <!-- Message if no plays -->
-      <div v-else-if="!plays.length && !preload">
+      <!-- We have to check for undefined FIRST because the search function returns an empty array if no results -->
+      <div v-else-if="(plays === undefined || plays.length === 0) && !preload">
         <v-alert type="warning">
-          Oops, there are no profitable plays at this time. Try showing all plays.
+          Oops, no plays were found. Try showing all plays and/or changing your search terms.
         </v-alert>
       </div>
 
@@ -263,7 +265,17 @@ export default {
       if (this.search_term) {
         let fuse = new Fuse(rawdata, this.fuse_options)
 
-        console.log(fuse.search(this.search_term))
+        // Results array from Fuse
+        let searcheddata = fuse.search(this.search_term)
+
+        // Clear rawdata, because we will fill it again in a moment
+        rawdata = []
+
+        // Fuse returns search items in a shitty way so we need to postprocess it
+        // More or less, every object in the results array has an "items" key which is what we want.
+        for (let i = 0; i < searcheddata.length; i++) {
+          rawdata.push(searcheddata[i].item)
+        }
       }
       return rawdata
     },
