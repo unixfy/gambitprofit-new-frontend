@@ -1,4 +1,3 @@
-<!--suppress ES6UnusedImports -->
 <template>
   <div>
     <PageHeader :pagedesc="page.description" :pagetitle="page.title"></PageHeader>
@@ -33,6 +32,11 @@ export default {
   components: {
     VBtn,
     VAlert
+  },
+  head() {
+    return {
+      title: this.page.title
+    }
   },
   async asyncData({$content, params, error}) {
     try {

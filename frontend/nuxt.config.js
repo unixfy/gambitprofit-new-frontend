@@ -10,7 +10,9 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
-    titleTemplate: '%s - GambitProfit',
+    titleTemplate(titleChunk) {
+      return titleChunk ? `${titleChunk} - GambitProfit` : "GambitProfit"
+    },
     title: 'GambitProfit',
     meta: [
       {charset: 'utf-8'},
@@ -61,8 +63,10 @@ export default {
     meta: {
       name: "GambitProfit",
       description: "The easy way to profit from Gambit Rewards!",
+      ogSiteName: "Unixfy",
       ogHost: "https://gambitprofit.netlify.app",
       ogImage: true,
+      ogUrl: "https://gambitprofit.com"
     },
     manifest: {
       name: 'GambitProfit',

@@ -38,6 +38,11 @@
 <script>
 export default {
   name: "Index",
-  component: true
+  component: true,
+  head() {
+    return {
+      title: 'Home'
+    }
+  }
 }
 </script>
