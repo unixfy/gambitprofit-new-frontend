@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <v-app>
+    <div>
       <!-- Configuration UI -->
       <v-card :loading="preload" class="mb-4" elevation="5">
         <v-card-title>
@@ -137,206 +137,11 @@
           <v-col v-for="(play, index) in plays" :key="play.PlayUrl" cols="12" lg="4" sm="6"
                  style="width:100% !important;" xl="3"
                  xs="12">
-            <v-card
-              v-show="!preload"
-              class="grid-item mx-auto"
-              width="400"
-            >
-              <v-card-title>
-                <p class="text-truncate">{{ play.game_name }}</p>
-              </v-card-title>
-              <v-card-subtitle>
-                {{ play.time }}
-              </v-card-subtitle>
-              <v-card-text>
-                <v-chip
-                  v-show="play.Calc.HighRisk.Recommended"
-                  class="my-1"
-                  color="red"
-                  text-color="white"
-                >
-                  <v-icon left>{{ `${generateIcon(play.Calc.HighRisk.ProfitPerCard)}` }}</v-icon>
-                  {{ play.Calc.HighRisk.ProfitPerCard }}% High Risk profit
-                </v-chip>
-
-                <v-chip
-                  v-show="play.Calc.MedRisk.Recommended"
-                  class="my-1"
-                  color="orange"
-                  text-color="white"
-                >
-                  <v-icon left>{{ `${generateIcon(play.Calc.MedRisk.ProfitPerCard)}` }}</v-icon>
-                  {{ play.Calc.MedRisk.ProfitPerCard }}% Med Risk profit
-                </v-chip>
-
-                <v-chip
-                  v-show="play.Calc.NoRisk.Recommended || show_all"
-                  class="my-1"
-                  color="green"
-                  text-color="white"
-                >
-                  <v-icon left>{{ `${generateIcon(play.Calc.NoRisk.ProfitPerCard)}` }}</v-icon>
-                  <div class="noriskprofit">{{ play.Calc.NoRisk.ProfitPerCard }}</div>
-                  % No Risk profit
-                </v-chip>
-              </v-card-text>
-              <v-card-actions>
-                <v-row>
-                  <v-col cols="12" lg="6">
-                    <v-dialog v-model="dialog"
-                              max-width="600"
-                              transition="dialog-top-transition">
-                      <template v-slot:activator="{on, attrs}">
-                        <v-btn
-                          v-bind="attrs"
-                          v-on="on"
-                          class="white--text"
-                          color="primary"
-                          elevation="1"
-                          small
-                          style="width:100%;"
-                        >
-                          <v-icon
-                            class="mr-2">
-                            mdi-information
-                          </v-icon>
-                          More Info
-                        </v-btn>
-                      </template>
-                      <v-card>
-                        <v-toolbar
-                          class="white--text"
-                          color="info"
-                        >{{ play.full_game_name }}
-                          <v-spacer></v-spacer>
-                          <v-btn
-                            color="white"
-                            icon
-                            @click="dialog = false"
-                          >
-                            <v-icon>mdi-close</v-icon>
-                          </v-btn>
-                        </v-toolbar>
-                        <v-card-text>
-                          <v-list three-line>
-                            <div v-show="play.Calc.HighRisk.Recommended">
-                              <v-list-item>
-                                <v-list-item-content>
-                                  <v-list-item-icon>
-                                    <v-chip
-                                      class="white--text mr-3"
-                                      color="red"
-                                      label
-                                    >
-                                      High Risk: {{ play.Calc.HighRisk.ProfitPerCard }}% profit
-                                      <v-icon>{{ `${generateIcon(play.Calc.HighRisk.ProfitPerCard)}` }}</v-icon>
-                                    </v-chip>
-                                  </v-list-item-icon>
-                                  <v-list-item-subtitle>
-                                    {{ play.Calc.HighRisk.TeamToBetOn }}: {{ play.Calc.HighRisk.BetAmount }} tokens
-                                  </v-list-item-subtitle>
-                                </v-list-item-content>
-                              </v-list-item>
-                              <v-divider></v-divider>
-                            </div>
-                            <div v-show="play.Calc.MedRisk.Recommended">
-                              <v-list-item>
-                                <v-list-item-content>
-                                  <v-list-item-icon>
-                                    <v-chip
-                                      class="white--text mr-3"
-                                      color="orange"
-                                      label
-                                    >
-                                      Med Risk: {{ play.Calc.MedRisk.ProfitPerCard }}% profit
-                                      <v-icon>{{ `${generateIcon(play.Calc.MedRisk.ProfitPerCard)}` }}</v-icon>
-                                    </v-chip>
-                                  </v-list-item-icon>
-                                  <v-list-item-subtitle>
-                                    {{ play.Calc.MedRisk.Team1ToBetOn }}: {{ play.Calc.MedRisk.Team1BetAmount }}
-                                    tokens
-                                  </v-list-item-subtitle>
-                                  <v-list-item-subtitle>
-                                    {{ play.Calc.MedRisk.Team2ToBetOn }}: {{ play.Calc.MedRisk.Team2BetAmount }}
-                                    tokens
-                                  </v-list-item-subtitle>
-                                </v-list-item-content>
-                              </v-list-item>
-                              <v-divider></v-divider>
-                            </div>
-                            <div v-show="play.Calc.NoRisk.Recommended || show_all">
-                              <v-list-item>
-                                <v-list-item-content>
-                                  <v-list-item-icon>
-                                    <v-chip
-                                      class="white--text mr-3"
-                                      color="green"
-                                      label
-                                    >
-                                      No Risk: {{ play.Calc.NoRisk.ProfitPerCard }}% profit
-                                      <v-icon>{{ `${generateIcon(play.Calc.NoRisk.ProfitPerCard)}` }}</v-icon>
-                                    </v-chip>
-                                  </v-list-item-icon>
-                                  <v-list-item-subtitle>
-                                    {{ play.Team1.Name }}: {{ play.Calc.NoRisk.Team1BetAmount }} tokens
-                                  </v-list-item-subtitle>
-                                  <v-list-item-subtitle>
-                                    {{ play.Team2.Name }}: {{ play.Calc.NoRisk.Team2BetAmount }} tokens
-                                  </v-list-item-subtitle>
-                                  <v-list-item-subtitle v-show="play.Draw.Reward">
-                                    Draw: {{ play.Calc.NoRisk.DrawBetAmount }} tokens
-                                  </v-list-item-subtitle>
-                                </v-list-item-content>
-                              </v-list-item>
-                              <v-divider></v-divider>
-                            </div>
-                          </v-list>
-                        </v-card-text>
-                        <v-card-actions>
-                          <v-btn
-                            :href="play.PlayUrl"
-                            block
-                            class="white--text"
-                            color="primary"
-                            elevation="1"
-                            large
-                            target="_blank"
-                            text
-                          >
-                            <v-icon
-                              class="mr-2">
-                              mdi-link
-                            </v-icon>
-                            Open on Gambit
-                          </v-btn>
-                        </v-card-actions>
-                      </v-card>
-                    </v-dialog>
-                  </v-col>
-                  <v-col cols="12" lg="6">
-                    <v-btn
-                      :href="play.PlayUrl"
-                      class="white--text"
-                      color="primary"
-                      elevation="1"
-                      small
-                      style="width:100%;"
-                      target="_blank"
-                    >
-                      <v-icon
-                        class="mr-2">
-                        mdi-link
-                      </v-icon>
-                      Open on Gambit
-                    </v-btn>
-                  </v-col>
-                </v-row>
-              </v-card-actions>
-            </v-card>
+              <SingleCard :play="play" :show_all="show_all" />
           </v-col>
         </v-row>
       </div>
-    </v-app>
+    </div>
   </ClientOnly>
 </template>
 <script>
@@ -344,13 +149,14 @@ import moment from 'moment'
 
 export default {
   name: 'Table',
+  component: true,
   data() {
     return {
       plays: [],
       error: null,
       // Whether the page is not loaded yet (ie the preloader should be shown)
       preload: true,
-      // Init tokens as 1 and it will be set later from the localstorage
+      // Init tokens amount as 1 and it will be set later from the localstorage
       tokens: 1,
       // Whether all plays are shown
       show_all: false,
@@ -363,8 +169,6 @@ export default {
         v => v >= this.min_tokens || `Min ${this.min_tokens}`,
         v => v <= this.max_tokens || `Max ${this.max_tokens}`,
       ],
-
-      dialog: false
     }
   },
   async mounted() {
@@ -379,11 +183,6 @@ export default {
     }
   },
   methods: {
-    generateIcon(profit) {
-      if (profit > 1) return 'mdi-check-circle'
-      else if (profit >= 0) return 'mdi-alert'
-      else return 'mdi-close-octagon'
-    },
     async loadData() {
       this.plays = []
       this.preload = true

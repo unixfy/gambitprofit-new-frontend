@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <div>
     <v-parallax
       height="200"
       dark
@@ -32,7 +32,7 @@
         <Cards/>
       </v-card-text>
     </v-card>
-  </v-app>
+  </div>
 </template>
 
 <script>

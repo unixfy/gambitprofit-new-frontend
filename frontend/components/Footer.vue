@@ -17,7 +17,8 @@
         by <a href="https://unixfy.net" target="_blank" rel="noopener" style="color:white;">Unixfy</a>.
         <br/>
         Proudly powered by <a href="https://nuxtjs.org" target="_blank" rel="noopener" style="color:white;">Nuxt.js</a> and <a
-        href="https://strapi.io" target="_blank" rel="noopener" style="color:white;">Strapi</a>.
+        href="https://strapi.io" target="_blank" rel="noopener" style="color:white;">Strapi</a>. Logo from <a href="https://twemoji.twitter.com/" target="_blank" rel="noopener" style="color:white;">
+        Twitter Twemoji</a>.
       </v-card-text>
     </v-card>
   </v-footer>

@@ -44,6 +44,15 @@
       <v-spacer></v-spacer>
       <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
+          <v-btn v-bind="attrs" v-on="on" icon href="https://go.unixfy.net/hca" rel="noopener" target="_blank">
+            <v-icon>mdi-discord</v-icon>
+          </v-btn>
+        </template>
+        Join Discord server
+      </v-tooltip>
+
+      <v-tooltip left>
+        <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" icon
                  @click="toggleTheme">
             <v-icon>mdi-brightness-6</v-icon>
@@ -51,6 +60,7 @@
         </template>
         Toggle dark mode
       </v-tooltip>
+
     </v-app-bar>
   </v-card>
 </template>
@@ -74,8 +84,8 @@ export default {
         },
         {
           icon: 'mdi-api',
-          title: 'API Docs',
-          href: 'https://api.gambitprofit.com/docs'
+          title: 'API',
+          to: '/api'
         },
         {
           icon: 'mdi-gift',

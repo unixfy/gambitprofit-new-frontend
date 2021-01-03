@@ -1,5 +1,5 @@
 <template>
-  <v-app dark>
+  <v-app>
     <v-card
       elevation="2"
     >
@@ -45,7 +45,7 @@
 
 <script>
 export default {
-  layout: 'empty',
+  layout: 'default',
   props: {
     error: {
       type: Object,
