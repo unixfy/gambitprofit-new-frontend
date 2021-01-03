@@ -1,3 +1,4 @@
+<!--suppress ES6UnusedImports -->
 <template>
   <div>
     <PageHeader :pagedesc="page.description" :pagetitle="page.title"></PageHeader>
@@ -24,6 +25,9 @@
   </div>
 </template>
 <script>
+// Need to manually import Vuetify components, otherwise components in MD files will not load.
+import { VBtn, VAlert } from 'vuetify/lib'
+
 // This page generates a page based on content from nuxt-content CMS.
 export default {
   component: true,
