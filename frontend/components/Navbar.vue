@@ -29,7 +29,7 @@
       clipped-left
       fixed
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer" aria-label="Open navigation drawer"></v-app-bar-nav-icon>
       <v-img
         class="mx-2"
         contain
@@ -44,7 +44,7 @@
       <v-spacer></v-spacer>
       <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
-          <v-btn v-bind="attrs" v-on="on" icon href="https://go.unixfy.net/hca" rel="noopener" target="_blank">
+          <v-btn v-bind="attrs" v-on="on" icon href="https://go.unixfy.net/hca" rel="noopener" target="_blank" aria-label="Join Discord server">
             <v-icon>mdi-discord</v-icon>
           </v-btn>
         </template>
@@ -54,7 +54,7 @@
       <v-tooltip left>
         <template v-slot:activator="{ on, attrs }">
           <v-btn v-bind="attrs" v-on="on" icon
-                 @click="toggleTheme">
+                 @click="toggleTheme" aria-label="Toggle dark mode">
             <v-icon>mdi-brightness-6</v-icon>
           </v-btn>
         </template>

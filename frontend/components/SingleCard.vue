@@ -23,6 +23,8 @@
             :href="play.PlayUrl"
             icon
             target="_blank"
+            rel="noopener"
+            aria-label="Open on Gambit Rewards"
           >
             <v-icon>mdi-open-in-new</v-icon>
           </v-btn>

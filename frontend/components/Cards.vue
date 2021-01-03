@@ -34,6 +34,8 @@
                       :min="min_tokens"
                       :rules="tokens_field_rules"
                       class="align-center mt-0 pt-0"
+                      aria-label="Token Amount Slider"
+                      aria-input-field-name="slider"
                     >
                       <template v-slot:append>
                         <v-text-field
@@ -42,6 +44,7 @@
                           class="mt-0 pt-0"
                           single-line
                           type="number"
+                          aria-label="Token Amount"
                         ></v-text-field>
                       </template>
                     </v-slider>

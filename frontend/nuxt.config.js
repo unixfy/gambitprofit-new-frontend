@@ -66,7 +66,8 @@ export default {
       ogSiteName: "Unixfy",
       ogHost: "https://gambitprofit.netlify.app",
       ogImage: true,
-      ogUrl: "https://gambitprofit.com"
+      ogUrl: "https://gambitprofit.com",
+      theme_color: "#03A9F4",
     },
     manifest: {
       name: 'GambitProfit',
