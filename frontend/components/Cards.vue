@@ -69,31 +69,46 @@
                 </v-card-title>
                 <v-card-subtitle>Find plays by name, date, or odds.</v-card-subtitle>
                 <v-card-text>
-                  <v-text-field
-                    class="mt-0 pt-0"
-                    clearable
-                    label="Search..."
+                  <v-form onSubmit="return false;" @submit="loadData"
                   >
-                  </v-text-field>
+                    <v-text-field
+                      :loading="preload"
+                      append-icon="mdi-magnify"
+                      class="mt-0 pt-0"
+                      clearable
+                      dense
+                      label="Search..."
+                      outlined
+                      @click:append="loadData"
+                      v-model="search_term"
+                    >
+                    </v-text-field>
+                  </v-form>
 
-                  <v-btn
-                    class="white--text"
+                  <v-btn-toggle
+                    v-model="sort_by"
                     color="primary"
+                    dense
                     elevation="4"
-                    small
-                  >Sort by date
-                  </v-btn>
-
-                  <v-btn
-                    class="white--text"
-                    color="primary"
-                    elevation="4"
-                    small
-                  >Sort by no-risk profit
-                  </v-btn>
+                    mandatory
+                  >
+                    <v-btn
+                      :loading="preload"
+                      @click="loadData"
+                    >
+                      Sort by date
+                    </v-btn>
+                    <v-btn
+                      :loading="preload"
+                      @click="loadData"
+                    >
+                      Sort by no-risk profit
+                    </v-btn>
+                  </v-btn-toggle>
 
                   <v-switch
                     v-model="show_all"
+                    dense
                     label="Show all plays?"
                     @click="loadData"
                   ></v-switch>
@@ -137,7 +152,7 @@
           <v-col v-for="(play, index) in plays" :key="play.PlayUrl" cols="12" lg="4" sm="6"
                  style="width:100% !important;" xl="3"
                  xs="12">
-              <SingleCard :play="play" :show_all="show_all" />
+            <SingleCard :play="play" :show_all="show_all"/>
           </v-col>
         </v-row>
       </div>
@@ -146,6 +161,7 @@
 </template>
 <script>
 import moment from 'moment'
+import Fuse from 'fuse.js'
 
 export default {
   name: 'Table',
@@ -160,8 +176,10 @@ export default {
       tokens: 1,
       // Whether all plays are shown
       show_all: false,
-
+      // Init form validation
       tokens_form_valid: false,
+
+      // Configure max/min for the tokens field
       min_tokens: 50,
       max_tokens: 200000,
       // Rules for the tokens amount field
@@ -169,13 +187,25 @@ export default {
         v => v >= this.min_tokens || `Min ${this.min_tokens}`,
         v => v <= this.max_tokens || `Max ${this.max_tokens}`,
       ],
+
+      // Default sort
+      // 0: Date, 1: NoRisk Profit
+      sort_by: 1,
+
+      // Search
+      search_term: "",
+
+      // Configuration for FuseJS
+      fuse_options: {
+        shouldSort: false,
+        keys: ['PlayUrl', 'Team1.Name', 'Team2.Name']
+      }
     }
   },
   async mounted() {
     try {
       // Load token amount from localstorage
       this.tokens = localStorage.getItem("tokens") || 1000
-      console.log(this.tokens)
       await this.loadData()
     } catch (error) {
       this.preload = false
@@ -206,6 +236,34 @@ export default {
           rawdata[i].game_name = `${rawdata[i].Team1.Name} vs ${rawdata[i].Team2.Name} ${rawdata[i].Draw.Reward ? "vs Draw" : ""}`
           rawdata[i].time = moment(rawdata[i].PlayDate).calendar()
         }
+      }
+
+      // Handle sorting
+      if (this.sort_by === 0) {
+        // Sort by date (using lexicographical comparison), nearest to farthest
+        rawdata.sort(function (a, b) {
+          let dateA = a.PlayDate
+          let dateB = b.PlayDate
+
+          if (dateA < dateB) return -1;
+          if (dateB > dateA) return 1;
+          return 0;
+        })
+      } else if (this.sort_by === 1) {
+        // Sort by no-risk profit amount, biggest to smallest
+        rawdata.sort(function (a, b) {
+          let profitA = a.Calc.NoRisk.ProfitPerCard
+          let profitB = b.Calc.NoRisk.ProfitPerCard
+
+          return profitB - profitA
+        })
+      }
+
+      // Handle searching using Fuse library <3
+      if (this.search_term) {
+        let fuse = new Fuse(rawdata, this.fuse_options)
+
+        console.log(fuse.search(this.search_term))
       }
       return rawdata
     },

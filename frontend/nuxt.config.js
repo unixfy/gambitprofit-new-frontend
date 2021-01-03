@@ -13,12 +13,12 @@ export default {
     titleTemplate: '%s - GambitProfit',
     title: 'GambitProfit',
     meta: [
-      { charset: 'utf-8' },
-      { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: 'The easy way to profit from Gambit Rewards!' }
+      {charset: 'utf-8'},
+      {name: 'viewport', content: 'width=device-width, initial-scale=1'},
+      {hid: 'description', name: 'description', content: 'The easy way to profit from Gambit Rewards!'}
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/logo.png' }
+      {rel: 'icon', type: 'image/x-icon', href: '/logo.png'}
     ]
   },
 
@@ -28,8 +28,7 @@ export default {
   ],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [
-  ],
+  plugins: [],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -39,6 +38,7 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
     '@nuxtjs/moment',
+    '@nuxtjs/google-analytics'
   ],
 
   // Modules (https://go.nuxtjs.dev/config-modules)
@@ -49,6 +49,7 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
+    '@nuxtjs/sitemap'
   ],
 
   // PWA
@@ -68,6 +69,29 @@ export default {
       short_name: 'GambitProfit',
       description: "The easy way to profit from Gambit Rewards!"
     },
+  },
+
+  // Sitemap
+  sitemap: {
+    hostname: 'https://gambitprofit.com',
+    gzip: true,
+    // Dynamically get routes from nuxt/content
+    // Thx https://medium.com/javascript-in-plain-english/generating-sitemap-entries-for-nuxt-content-f7eb7b5fdb3b
+    // Note: We use slug instead of path because our files are in a subdirectory, but their slug is not
+    routes: async () => {
+      const { $content } = require('@nuxt/content')
+
+      const pages = await $content('site-pages')
+        .only(['slug'])
+        .fetch()
+
+      return pages.map((p) => p.slug)
+    }
+  },
+
+  // Google Analytics
+  googleAnalytics: {
+    id: 'UA-133162940-5'
   },
 
   // Strapi module config
@@ -99,6 +123,5 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {
-  }
+  build: {}
 }
