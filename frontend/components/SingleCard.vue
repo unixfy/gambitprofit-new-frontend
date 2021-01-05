@@ -69,8 +69,7 @@
                 color="green"
                 text-color="white"
               >
-<!--                <v-icon left>{{ `${generateIcon(play.Calc.NoRisk.ProfitPerCard)}` }}</v-icon>-->
-                <div class="noriskprofit">{{ play.Calc.NoRisk.ProfitPerCard }}</div>
+                {{ play.Calc.NoRisk.ProfitPerCard }}
                 % No Risk profit
               </v-chip>
 
@@ -80,7 +79,6 @@
                 color="orange"
                 text-color="white"
               >
-<!--                <v-icon left>{{ `${generateIcon(play.Calc.MedRisk.ProfitPerCard)}` }}</v-icon>-->
                 {{ play.Calc.MedRisk.ProfitPerCard }}% Med Risk profit
               </v-chip>
 
@@ -90,7 +88,6 @@
                 color="red"
                 text-color="white"
               >
-<!--                <v-icon left>{{ `${generateIcon(play.Calc.HighRisk.ProfitPerCard)}` }}</v-icon>-->
                 {{ play.Calc.HighRisk.ProfitPerCard }}% High Risk profit
               </v-chip>
             </v-list-item-content>
@@ -155,12 +152,6 @@ export default {
     }
   },
   methods: {
-    // Generate an icon depending on the profit %
-    generateIcon(profit) {
-      if (profit > 1) return 'mdi-check-circle'
-      else if (profit >= 0) return 'mdi-alert'
-      else return 'mdi-close-octagon'
-    },
   }
 }
 </script>
