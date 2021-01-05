@@ -6,8 +6,7 @@
       color="green"
       text-color="white"
     >
-      {{ play.Calc.NoRisk.ProfitPerCard }}
-      % No Risk profit
+      {{ play.Calc.NoRisk.ProfitPerCard }}% No Risk profit
     </v-chip>
 
     <v-chip
