@@ -372,8 +372,23 @@ export default {
       } else if (this.sort_by === 1) {
         // Sort by no-risk profit amount, biggest to smallest
         rawdata.sort(function (a, b) {
-          let profitA = a.Calc.NoRisk.ProfitPerCard
-          let profitB = b.Calc.NoRisk.ProfitPerCard
+          // Basically, the number used for sorting is the maximum of the high risk, med risk, and no risk profits
+          let profitA_array = [
+            a.Calc.NoRisk.ProfitPerCard,
+            ... (a.Calc.MedRisk.Recommended ? [a.Calc.MedRisk.ProfitPerCard] : []),
+            ... (a.Calc.HighRisk.Recommended ? [a.Calc.HighRisk.ProfitPerCard] : [])
+          ]
+
+          let profitB_array = [
+            b.Calc.NoRisk.ProfitPerCard,
+            ... (b.Calc.MedRisk.Recommended ? [b.Calc.MedRisk.ProfitPerCard] : []),
+            ... (b.Calc.HighRisk.Recommended ? [b.Calc.HighRisk.ProfitPerCard] : [])
+          ]
+
+          let profitA = Math.max(...profitA_array)
+          let profitB = Math.max(...profitB_array)
+
+          console.log(profitA_array, profitB_array, profitA, profitB)
 
           return profitB - profitA
         })
