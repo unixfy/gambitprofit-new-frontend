@@ -9,7 +9,7 @@
 
           <v-tooltip left>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn v-bind="attrs" v-on="on" icon large @click="loadData">
+              <v-btn v-bind="attrs" v-on="on" aria-label="Reload data" icon large @click="loadData">
                 <v-icon>mdi-refresh</v-icon>
               </v-btn>
             </template>
@@ -30,7 +30,7 @@
                   <v-form v-model="tokens_form_valid">
                     <v-text-field
                       v-model="tokens"
-                      :loading="preload"
+                      :disabled="preload"
                       :rules="tokens_field_rules"
                       aria-label="Token Amount"
                       class="mt-0 pt-0"
@@ -46,11 +46,11 @@
 
                     <v-btn-toggle
                       v-model="tokens"
-                      style="width:100%;"
                       :disabled="preload"
-                      dense
                       class="my-3"
                       color="primary"
+                      dense
+                      style="width:100%;"
                     >
                       <v-btn value="1000">
                         1000
@@ -70,8 +70,7 @@
                     </v-btn-toggle>
 
                     <v-btn
-                      :disabled="!tokens_form_valid"
-                      :loading="preload"
+                      :disabled="!tokens_form_valid || preload"
                       block
                       color="primary"
                       elevation="4"
@@ -92,20 +91,19 @@
                 </v-card-title>
                 <v-card-subtitle>Find plays by name, date, or odds.</v-card-subtitle>
                 <v-card-text>
-                  <v-form onSubmit="return false;" @submit="loadData"
-                  >
+                  <v-form onSubmit="return false;" @submit="loadData">
                     <v-text-field
                       v-model="search_term"
-                      :loading="preload"
+                      :disabled="preload"
                       append-icon="mdi-magnify"
                       class="mt-0 pt-0"
                       clearable
                       dense
+                      hide-details="auto"
                       label="Search by name/URL"
                       outlined
                       @click:append="loadData"
                       @click:clear="loadData"
-                      hide-details="auto"
                     >
                     </v-text-field>
                   </v-form>
@@ -120,13 +118,13 @@
                   >
 
                     <v-btn
-                      :loading="preload"
+                      :disabled="preload"
                       @click="loadData"
                     >
                       Date
                     </v-btn>
                     <v-btn
-                      :loading="preload"
+                      :disabled="preload"
                       @click="loadData"
                     >
                       Profit
@@ -145,6 +143,20 @@
           </v-row>
         </v-card-text>
       </v-card>
+
+      <!-- Toggle between cards and table -->
+      <div class="mb-5">
+        <v-btn-toggle v-model="display_mode" color="primary" mandatory>
+          <v-btn>
+            <v-icon left>mdi-view-grid-outline</v-icon>
+            Cards
+          </v-btn>
+          <v-btn>
+            <v-icon left>mdi-table</v-icon>
+            Table
+          </v-btn>
+        </v-btn-toggle>
+      </div>
 
       <!-- Preloader-->
       <div v-if="preload">
@@ -174,8 +186,8 @@
         </v-alert>
       </div>
 
-      <!-- Grid of plays -->
-      <div v-else class="sorting-grid mt-4">
+      <!-- Grid of plays - cards layout -->
+      <div v-else-if="display_mode === 0 && !preload" class="sorting-grid mt-4">
         <v-row>
           <v-col v-for="(play, index) in plays" :key="play.PlayUrl" cols="12" lg="4" sm="6"
                  style="width:100% !important;" xl="3"
@@ -184,15 +196,65 @@
           </v-col>
         </v-row>
       </div>
+
+      <!-- Grid of plays - Table layout -->
+      <v-data-table
+        v-else
+        :headers="headers"
+        :items="plays"
+        :server-items-length="plays.length"
+        calculate-widths
+        class="elevation-3"
+        disable-filtering
+        disable-sort
+        fixed-header
+        item-key="PlayUrl"
+        show-expand
+        single-expand
+      >
+        <template v-slot:item.profitpercard="{ item }">
+          <ProfitChips :play="item" :show_all="show_all"/>
+        </template>
+        <!-- URL open button -->
+        <template v-slot:item.PlayUrl="{ item }">
+          <v-tooltip bottom>
+            <template v-slot:activator="{ on, attrs }">
+              <v-btn
+                v-bind="attrs"
+                v-on="on"
+                :href="item.PlayUrl"
+                aria-label="Open on Gambit Rewards"
+                icon
+                rel="noopener"
+                target="_blank"
+              >
+                <v-icon>mdi-open-in-new</v-icon>
+              </v-btn>
+            </template>
+            <span>Open in GambitRewards</span>
+          </v-tooltip>
+        </template>
+        <template v-slot:expanded-item="{ headers, item }">
+          <td :colspan="headers.length" class="py-1">
+            <v-list>
+              <BetAmountsList :play="item" :show_all="show_all"></BetAmountsList>
+            </v-list>
+          </td>
+        </template>
+      </v-data-table>
+
     </div>
   </ClientOnly>
 </template>
 <script>
 import moment from 'moment'
 import Fuse from 'fuse.js'
+import BetAmountsList from "./BetAmountsList";
+import ProfitChips from "./ProfitChips";
 
 export default {
   name: 'Cards',
+  components: {ProfitChips, BetAmountsList},
   component: true,
   data() {
     return {
@@ -206,6 +268,8 @@ export default {
       show_all: true,
       // Init form validation
       tokens_form_valid: false,
+      // Whether cards or table is displayed
+      display_mode: 0,
 
       // Configure max/min for the tokens field
       min_tokens: 50,
@@ -227,7 +291,35 @@ export default {
       fuse_options: {
         shouldSort: false,
         keys: ['PlayUrl', 'Team1.Name', 'Team2.Name']
-      }
+      },
+
+      // Table config
+      headers: [
+        {
+          text: 'Play Name',
+          align: 'start',
+          value: 'full_game_name',
+          groupable: false
+        },
+        {
+          text: 'Play Time',
+          value: 'time',
+          groupable: false
+        },
+        {
+          text: 'Profit?',
+          value: 'profitpercard',
+          groupable: true
+        },
+        {
+          text: 'Link',
+          value: 'PlayUrl',
+        },
+        {
+          value: 'data-table-expand',
+          align: 'end'
+        }
+      ]
     }
   },
   async mounted() {

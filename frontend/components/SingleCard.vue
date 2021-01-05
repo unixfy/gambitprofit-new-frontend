@@ -63,88 +63,22 @@
               <v-icon>mdi-cash-multiple</v-icon>
             </v-list-item-icon>
             <v-list-item-content>
-              <v-chip
-                v-show="play.Calc.NoRisk.Recommended || show_all"
-                class="my-1"
-                color="green"
-                text-color="white"
-              >
-                {{ play.Calc.NoRisk.ProfitPerCard }}
-                % No Risk profit
-              </v-chip>
-
-              <v-chip
-                v-show="play.Calc.MedRisk.Recommended"
-                class="my-1"
-                color="orange"
-                text-color="white"
-              >
-                {{ play.Calc.MedRisk.ProfitPerCard }}% Med Risk profit
-              </v-chip>
-
-              <v-chip
-                v-show="play.Calc.HighRisk.Recommended"
-                class="my-1"
-                color="red"
-                text-color="white"
-              >
-                {{ play.Calc.HighRisk.ProfitPerCard }}% High Risk profit
-              </v-chip>
+              <ProfitChips :play="play" :show_all="show_all"/>
             </v-list-item-content>
           </v-list-item>
 
-          <!-- NoRisk Bets -->
-          <v-list-item v-show="play.Calc.NoRisk.Recommended || show_all" dense three-line>
-            <v-list-item-content>
-              <v-list-item-title color="green">
-                No Risk
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                {{ play.Team1.Name }}: Bet {{ play.Calc.NoRisk.Team1BetAmount }} tokens
-              </v-list-item-subtitle>
-              <v-list-item-subtitle>
-                {{ play.Team2.Name }}: Bet {{ play.Calc.NoRisk.Team2BetAmount }} tokens
-              </v-list-item-subtitle>
-              <v-list-item-subtitle v-show="play.Draw.Reward">
-                Draw: Bet {{ play.Calc.NoRisk.DrawBetAmount }} tokens
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-
-          <!-- MedRisk Bets -->
-          <v-list-item v-show="play.Calc.MedRisk.Recommended" dense two-line>
-            <v-list-item-content>
-              <v-list-item-title color="orange">
-                Med Risk
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                {{ play.Calc.MedRisk.Team1ToBetOn }}: Bet {{ play.Calc.MedRisk.Team1BetAmount }} tokens
-              </v-list-item-subtitle>
-              <v-list-item-subtitle>
-                {{ play.Calc.MedRisk.Team2ToBetOn }}: Bet {{ play.Calc.MedRisk.Team2BetAmount }} tokens
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
-
-          <!-- HighRisk Bets -->
-          <v-list-item v-show="play.Calc.HighRisk.Recommended" dense>
-            <v-list-item-content>
-              <v-list-item-title color="red">
-                High Risk
-              </v-list-item-title>
-              <v-list-item-subtitle>
-                {{ play.Calc.HighRisk.TeamToBetOn }}: Bet {{ play.Calc.HighRisk.BetAmount }} tokens
-              </v-list-item-subtitle>
-            </v-list-item-content>
-          </v-list-item>
+          <BetAmountsList :play="play" :show_all="show_all"/>
         </v-list>
       </v-card-text>
     </v-card>
   </v-card>
 </template>
 <script>
+import ProfitChips from "./ProfitChips";
+import BetAmountsList from "./BetAmountsList";
 export default {
   name: 'SingleCard',
+  components: {BetAmountsList, ProfitChips},
   props: ['play', 'show_all'],
   data() {
     return {
