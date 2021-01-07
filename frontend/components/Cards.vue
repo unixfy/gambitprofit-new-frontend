@@ -353,7 +353,7 @@ export default {
           rawdata.splice(i, 1)
           i--
           // Drop all items which have already started
-        } else if (moment(rawdata[i].PlayDate).diff() > -1) {
+        } else if (moment(rawdata[i].PlayDate).diff() < -1) {
           rawdata.splice(i, 1)
           i--
         } else {
