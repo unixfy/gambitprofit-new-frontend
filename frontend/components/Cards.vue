@@ -316,6 +316,7 @@ export default {
           value: 'PlayUrl',
         },
         {
+          text: 'Bet Amounts',
           value: 'data-table-expand',
           align: 'end'
         }
