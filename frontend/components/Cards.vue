@@ -307,6 +307,11 @@ export default {
           groupable: false
         },
         {
+          text: 'Last Updated',
+          value: 'updatedat',
+          groupable: false
+        },
+        {
           text: 'Profit?',
           value: 'profitpercard',
           groupable: true
@@ -348,7 +353,7 @@ export default {
           rawdata.splice(i, 1)
           i--
           // Drop all items which have already started
-        } else if (moment(rawdata[i].PlayDate).diff() < -1) {
+        } else if (moment(rawdata[i].PlayDate).diff() > -1) {
           rawdata.splice(i, 1)
           i--
         } else {
@@ -356,6 +361,7 @@ export default {
           rawdata[i].full_game_name = `${rawdata[i].Team1.Name} (${rawdata[i].Team1.Reward}) v. ${rawdata[i].Team2.Name} (${rawdata[i].Team2.Reward}) ${rawdata[i].Draw.Reward ? "v. Draw (" + rawdata[i].Draw.Reward + ")" : ""}`
           rawdata[i].game_name = `${rawdata[i].Team1.Name} vs ${rawdata[i].Team2.Name} ${rawdata[i].Draw.Reward ? "vs Draw" : ""}`
           rawdata[i].time = moment(rawdata[i].PlayDate).calendar()
+          rawdata[i].updatedat = `${moment(rawdata[i].updatedAt).fromNow()}`
         }
       }
 
