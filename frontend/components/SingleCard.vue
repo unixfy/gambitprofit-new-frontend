@@ -67,7 +67,7 @@
           <BetAmountsList :play="play" :show_all="show_all"/>
           <v-list-item dense>
             <v-list-item-content>
-              <v-list-item-subtitle>
+              <v-list-item-subtitle style="font-weight: normal !important;">
                 <i>Last updated {{ play.updatedat }}</i>
               </v-list-item-subtitle>
             </v-list-item-content>
