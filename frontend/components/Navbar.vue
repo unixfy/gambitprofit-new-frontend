@@ -101,6 +101,16 @@ export default {
           icon: 'mdi-help-circle',
           title: 'Help',
           to: '/contact'
+        },
+        {
+          icon: 'mdi-road',
+          title: 'Roadmap',
+          href: 'https://jira.unixfy.net/plugins/servlet/desk/project/GAMPROF'
+        },
+        {
+          icon: 'mdi-comment-quote',
+          title: 'Send feedback',
+          href: 'https://jira.unixfy.net/rest/collectors/1.0/template/form/67f45fd4'
         }
       ],
       title: 'GambitProfit'
