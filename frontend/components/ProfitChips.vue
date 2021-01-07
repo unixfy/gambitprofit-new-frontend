@@ -6,7 +6,7 @@
       color="green"
       text-color="white"
     >
-      {{ play.Calc.NoRisk.ProfitPerCard }}% No Risk profit
+      {{ play.Calc.NoRisk.ProfitPerCard }}% No Risk profit ≈ {{ (play.Calc.NoRisk.CalculatedReward - (tokens * discountPercentage)).toFixed(2) }} SB
     </v-chip>
 
     <v-chip
@@ -31,6 +31,12 @@
 <script>
 export default {
   name: "ProfitChips",
-  props: ['play', 'show_all']
+  props: ['play', 'show_all', 'tokens'],
+  data() {
+    return {
+      // The actual SB cost of 1 gambit token
+      discountPercentage: 0.90
+    }
+  }
 }
 </script>

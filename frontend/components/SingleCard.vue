@@ -59,11 +59,8 @@
           </v-list-item>
           <!-- Profit amounts -->
           <v-list-item dense>
-            <v-list-item-icon>
-              <v-icon>mdi-cash-multiple</v-icon>
-            </v-list-item-icon>
             <v-list-item-content>
-              <ProfitChips :play="play" :show_all="show_all"/>
+              <ProfitChips :play="play" :show_all="show_all" :tokens="tokens"/>
             </v-list-item-content>
           </v-list-item>
 
@@ -79,7 +76,7 @@ import BetAmountsList from "./BetAmountsList";
 export default {
   name: 'SingleCard',
   components: {BetAmountsList, ProfitChips},
-  props: ['play', 'show_all'],
+  props: ['play', 'show_all', 'tokens'],
   data() {
     return {
       tabs: ''

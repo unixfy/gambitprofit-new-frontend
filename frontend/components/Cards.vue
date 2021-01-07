@@ -192,7 +192,7 @@
           <v-col v-for="(play, index) in plays" :key="play.PlayUrl" cols="12" lg="4" sm="6"
                  style="width:100% !important;" xl="3"
                  xs="12">
-            <SingleCard :play="play" :show_all="show_all"/>
+            <SingleCard :play="play" :show_all="show_all" :tokens="tokens"/>
           </v-col>
         </v-row>
       </div>
@@ -213,7 +213,7 @@
         single-expand
       >
         <template v-slot:item.profitpercard="{ item }">
-          <ProfitChips :play="item" :show_all="show_all"/>
+          <ProfitChips :play="item" :show_all="show_all" :tokens="tokens"/>
         </template>
         <!-- URL open button -->
         <template v-slot:item.PlayUrl="{ item }">
