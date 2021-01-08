@@ -15,7 +15,7 @@
       color="orange"
       text-color="white"
     >
-      {{ play.Calc.MedRisk.ProfitPerCard }}% Med Risk profit ≈ {{ (play.Calc.MedRisk.CalculatedReward - (tokens * discountPercentage)).toFixed(2) }} SB
+      {{ play.Calc.MedRisk.ProfitPerCard }}% Med Risk profit ≈ {{ (play.Calc.MedRisk.CalculatedReward - (tokensVal * discountPercentage)).toFixed(2) }} SB
     </v-chip>
 
     <v-chip
@@ -24,7 +24,7 @@
       color="red"
       text-color="white"
     >
-      {{ play.Calc.HighRisk.ProfitPerCard }}% High Risk profit ≈ {{ (play.Calc.HighRisk.CalculatedReward - (tokens * discountPercentage)).toFixed(2) }} SB
+      {{ play.Calc.HighRisk.ProfitPerCard }}% High Risk profit ≈ {{ (play.Calc.HighRisk.CalculatedReward - (tokensVal * discountPercentage)).toFixed(2) }} SB
     </v-chip>
   </div>
 </template>
