@@ -211,6 +211,8 @@
         item-key="PlayUrl"
         show-expand
         single-expand
+        disable-pagination
+        hide-default-footer
       >
         <template v-slot:item.profitpercard="{ item }">
           <ProfitChips :play="item" :show_all="show_all" :tokens="tokens"/>
