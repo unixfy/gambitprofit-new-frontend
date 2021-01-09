@@ -342,7 +342,7 @@ export default {
     async loadData() {
       this.plays = []
       this.preload = true
-      this.rawdata = await this.$strapi.$http.$get(`gambit-plays/tokens/${this.tokens}?_limit=100&_sort=createdAt:DESC`)
+      this.rawdata = await this.$strapi.$http.$get(`gambit-plays/tokens/${this.tokens}?_limit=250&_sort=PlayDate:DESC`)
       this.plays = this.processPlays(this.rawdata)
       this.preload = false
     },
@@ -394,8 +394,6 @@ export default {
 
           let profitA = Math.max(...profitA_array)
           let profitB = Math.max(...profitB_array)
-
-          console.log(profitA_array, profitB_array, profitA, profitB)
 
           return profitB - profitA
         })
