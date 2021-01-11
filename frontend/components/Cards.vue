@@ -334,6 +334,8 @@ export default {
     try {
       // Load token amount from localstorage
       this.tokens = localStorage.getItem("tokens") || 1000
+      // Load cards/table display mode form localstorage
+      this.display_mode = parseInt((localStorage.getItem("display_mode"))) || 0
       await this.loadData()
     } catch (error) {
       this.preload = false
@@ -423,6 +425,12 @@ export default {
       localStorage.setItem("tokens", this.tokens)
       this.loadData()
     },
+  },
+  watch: {
+    // Automatically save display_mode prop to localstorage whenever it changes.
+    display_mode: function() {
+      localStorage.setItem("display_mode", this.display_mode)
+    }
   }
 }
 </script>
