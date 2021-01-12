@@ -292,7 +292,9 @@ export default {
       // Configuration for FuseJS
       fuse_options: {
         shouldSort: false,
-        keys: ['PlayUrl', 'Team1.Name', 'Team2.Name']
+        keys: ['PlayUrl', 'Team1.Name', 'Team2.Name', 'Calc.NoRisk.ProfitPerCard', 'Team1.Reward', 'Team2.Reward'],
+        minMatchCharLength: 2,
+        threshold: 0.4,
       },
 
       // Table config
