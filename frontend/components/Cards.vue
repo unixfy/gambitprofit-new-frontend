@@ -27,7 +27,7 @@
                 <v-card-subtitle>The number of tokens you wish to bet.</v-card-subtitle>
                 <v-card-text>
                   <!--                  This form will be disabled if the rules are not met -->
-                  <v-form v-model="tokens_form_valid">
+                  <v-form v-model="tokens_form_valid" onSubmit="return false;" @submit="setTokens">
                     <v-text-field
                       v-model="tokens"
                       :disabled="preload"
@@ -75,7 +75,7 @@
                       color="primary"
                       elevation="4"
                       large
-                      @click="setTokens"
+                      type="submit"
                     >
                       Save
                     </v-btn>
