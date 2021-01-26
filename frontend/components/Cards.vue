@@ -2,150 +2,140 @@
   <ClientOnly>
     <div>
       <!-- Configuration UI -->
-      <v-card class="mb-4" elevation="5">
-        <v-card-title>
-          Settings
-          <v-spacer></v-spacer>
+      <v-expansion-panels class="mb-5 elevation-2">
+        <v-expansion-panel>
+          <v-expansion-panel-header ripple>
+            <span class="text-h6">Settings</span>
+          </v-expansion-panel-header>
+          <v-expansion-panel-content>
+                <v-row>
+                  <v-col cols="12" md="6">
+                    <v-card outlined>
+                      <v-card-title>Token Amount</v-card-title>
+                      <v-card-subtitle>The number of tokens you wish to bet.</v-card-subtitle>
+                      <v-card-text>
+                        <!--                  This form will be disabled if the rules are not met -->
+                        <v-form v-model="tokens_form_valid" onSubmit="return false;" @submit="setTokens">
+                          <v-text-field
+                            v-model="tokens"
+                            :disabled="preload"
+                            :rules="tokens_field_rules"
+                            aria-label="Token Amount"
+                            class="mt-0 pt-0"
+                            dense
+                            hide-details="auto"
+                            label="Token Amount"
+                            outlined
+                            single-line
+                            suffix="tokens"
+                            type="number"
+                          >
+                          </v-text-field>
 
-          <v-tooltip left>
-            <template v-slot:activator="{ on, attrs }">
-              <v-btn v-bind="attrs" v-on="on" aria-label="Reload data" icon large @click="loadData">
-                <v-icon>mdi-refresh</v-icon>
-              </v-btn>
-            </template>
-            <span>Reload data</span>
-          </v-tooltip>
-        </v-card-title>
-        <v-card-subtitle>
-          Configure the application.
-        </v-card-subtitle>
-        <v-card-text>
-          <v-row>
-            <v-col cols="12" md="6">
-              <v-card outlined>
-                <v-card-title>Token Amount</v-card-title>
-                <v-card-subtitle>The number of tokens you wish to bet.</v-card-subtitle>
-                <v-card-text>
-                  <!--                  This form will be disabled if the rules are not met -->
-                  <v-form v-model="tokens_form_valid" onSubmit="return false;" @submit="setTokens">
-                    <v-text-field
-                      v-model="tokens"
-                      :disabled="preload"
-                      :rules="tokens_field_rules"
-                      aria-label="Token Amount"
-                      class="mt-0 pt-0"
-                      dense
-                      hide-details="auto"
-                      label="Token Amount"
-                      outlined
-                      single-line
-                      suffix="tokens"
-                      type="number"
-                    >
-                    </v-text-field>
+                          <v-btn-toggle
+                            v-model="tokens"
+                            :disabled="preload"
+                            class="my-3"
+                            color="primary"
+                            dense
+                            style="width:100%;"
+                          >
+                            <v-btn value="1000">
+                              1000
+                            </v-btn>
 
-                    <v-btn-toggle
-                      v-model="tokens"
-                      :disabled="preload"
-                      class="my-3"
-                      color="primary"
-                      dense
-                      style="width:100%;"
-                    >
-                      <v-btn value="1000">
-                        1000
-                      </v-btn>
+                            <v-btn value="2500">
+                              2500
+                            </v-btn>
 
-                      <v-btn value="2500">
-                        2500
-                      </v-btn>
+                            <v-btn value="5000">
+                              5000
+                            </v-btn>
 
-                      <v-btn value="5000">
-                        5000
-                      </v-btn>
+                            <v-btn value="10000">
+                              10000
+                            </v-btn>
+                          </v-btn-toggle>
 
-                      <v-btn value="10000">
-                        10000
-                      </v-btn>
-                    </v-btn-toggle>
+                          <v-btn
+                            :disabled="!tokens_form_valid || preload"
+                            block
+                            color="primary"
+                            elevation="4"
+                            large
+                            type="submit"
+                          >
+                            Save
+                          </v-btn>
+                        </v-form>
+                      </v-card-text>
+                    </v-card>
+                  </v-col>
 
-                    <v-btn
-                      :disabled="!tokens_form_valid || preload"
-                      block
-                      color="primary"
-                      elevation="4"
-                      large
-                      type="submit"
-                    >
-                      Save
-                    </v-btn>
-                  </v-form>
-                </v-card-text>
-              </v-card>
-            </v-col>
+                  <v-col cols="12" md="6">
+                    <v-card outlined>
+                      <v-card-title>
+                        Search & Sort
+                      </v-card-title>
+                      <v-card-subtitle>Find plays by name, date, or odds.</v-card-subtitle>
+                      <v-card-text>
+                        <v-form onSubmit="return false;" @submit="loadData">
+                          <v-text-field
+                            v-model="search_term"
+                            :disabled="preload"
+                            append-icon="mdi-magnify"
+                            class="mt-0 pt-0"
+                            clearable
+                            dense
+                            hide-details="auto"
+                            label="Search by name/URL"
+                            outlined
+                            @click:append="loadData"
+                            @click:clear="loadData"
+                          >
+                          </v-text-field>
+                        </v-form>
 
-            <v-col cols="12" md="6">
-              <v-card outlined>
-                <v-card-title>
-                  Search & Sort
-                </v-card-title>
-                <v-card-subtitle>Find plays by name, date, or odds.</v-card-subtitle>
-                <v-card-text>
-                  <v-form onSubmit="return false;" @submit="loadData">
-                    <v-text-field
-                      v-model="search_term"
-                      :disabled="preload"
-                      append-icon="mdi-magnify"
-                      class="mt-0 pt-0"
-                      clearable
-                      dense
-                      hide-details="auto"
-                      label="Search by name/URL"
-                      outlined
-                      @click:append="loadData"
-                      @click:clear="loadData"
-                    >
-                    </v-text-field>
-                  </v-form>
+                        <p>Sort by:</p>
+                        <v-btn-toggle
+                          v-model="sort_by"
+                          color="primary"
+                          dense
+                          elevation="4"
+                          mandatory
+                        >
 
-                  <p>Sort by:</p>
-                  <v-btn-toggle
-                    v-model="sort_by"
-                    color="primary"
-                    dense
-                    elevation="4"
-                    mandatory
-                  >
+                          <v-btn
+                            :disabled="preload"
+                            @click="loadData"
+                          >
+                            Date
+                          </v-btn>
+                          <v-btn
+                            :disabled="preload"
+                            @click="loadData"
+                          >
+                            Profit
+                          </v-btn>
+                        </v-btn-toggle>
 
-                    <v-btn
-                      :disabled="preload"
-                      @click="loadData"
-                    >
-                      Date
-                    </v-btn>
-                    <v-btn
-                      :disabled="preload"
-                      @click="loadData"
-                    >
-                      Profit
-                    </v-btn>
-                  </v-btn-toggle>
+                        <v-switch
+                          v-model="show_all"
+                          dense
+                          label="Show all plays?"
+                          @click="loadData"
+                        ></v-switch>
+                      </v-card-text>
+                    </v-card>
+                  </v-col>
+                </v-row>
 
-                  <v-switch
-                    v-model="show_all"
-                    dense
-                    label="Show all plays?"
-                    @click="loadData"
-                  ></v-switch>
-                </v-card-text>
-              </v-card>
-            </v-col>
-          </v-row>
-        </v-card-text>
-      </v-card>
+          </v-expansion-panel-content>
+        </v-expansion-panel>
+      </v-expansion-panels>
 
-      <!-- Toggle between cards and table -->
-      <div class="mb-5">
+      <!-- Toggle between cards and table, also button to reload data -->
+      <div class="mb-5 d-flex">
         <v-btn-toggle v-model="display_mode" color="primary" mandatory>
           <v-btn>
             <v-icon left>mdi-view-grid-outline</v-icon>
@@ -156,6 +146,15 @@
             Table
           </v-btn>
         </v-btn-toggle>
+
+        <v-tooltip left>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on" aria-label="Reload data" icon large @click="loadData" class="ml-auto">
+              <v-icon>mdi-refresh</v-icon>
+            </v-btn>
+          </template>
+          <span>Reload data</span>
+        </v-tooltip>
       </div>
 
       <!-- Preloader-->
@@ -206,13 +205,13 @@
         calculate-widths
         class="elevation-3"
         disable-filtering
+        disable-pagination
         disable-sort
         fixed-header
+        hide-default-footer
         item-key="PlayUrl"
         show-expand
         single-expand
-        disable-pagination
-        hide-default-footer
       >
         <template v-slot:item.profitpercard="{ item }">
           <ProfitChips :play="item" :show_all="show_all" :tokens="tokens"/>
@@ -388,14 +387,14 @@ export default {
           // Basically, the number used for sorting is the maximum of the high risk, med risk, and no risk profits
           let profitA_array = [
             a.Calc.NoRisk.ProfitPerCard,
-            ... (a.Calc.MedRisk.Recommended ? [a.Calc.MedRisk.ProfitPerCard] : []),
-            ... (a.Calc.HighRisk.Recommended ? [a.Calc.HighRisk.ProfitPerCard] : [])
+            ...(a.Calc.MedRisk.Recommended ? [a.Calc.MedRisk.ProfitPerCard] : []),
+            ...(a.Calc.HighRisk.Recommended ? [a.Calc.HighRisk.ProfitPerCard] : [])
           ]
 
           let profitB_array = [
             b.Calc.NoRisk.ProfitPerCard,
-            ... (b.Calc.MedRisk.Recommended ? [b.Calc.MedRisk.ProfitPerCard] : []),
-            ... (b.Calc.HighRisk.Recommended ? [b.Calc.HighRisk.ProfitPerCard] : [])
+            ...(b.Calc.MedRisk.Recommended ? [b.Calc.MedRisk.ProfitPerCard] : []),
+            ...(b.Calc.HighRisk.Recommended ? [b.Calc.HighRisk.ProfitPerCard] : [])
           ]
 
           let profitA = Math.max(...profitA_array)
@@ -430,7 +429,7 @@ export default {
   },
   watch: {
     // Automatically save display_mode prop to localstorage whenever it changes.
-    display_mode: function() {
+    display_mode: function () {
       localStorage.setItem("display_mode", this.display_mode)
     }
   }
