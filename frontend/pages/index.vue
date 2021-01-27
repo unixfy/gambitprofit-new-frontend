@@ -29,7 +29,7 @@
       <v-card-title>Latest Gambit Plays</v-card-title>
       <v-card-subtitle>Data is retrieved from our API.</v-card-subtitle>
       <v-card-text>
-        <Cards/>
+        <PlaysDisplay />
       </v-card-text>
     </v-card>
   </div>

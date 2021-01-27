@@ -254,7 +254,7 @@ import BetAmountsList from "./BetAmountsList";
 import ProfitChips from "./ProfitChips";
 
 export default {
-  name: 'Cards',
+  name: 'PlaysDisplay',
   components: {ProfitChips, BetAmountsList},
   component: true,
   data() {
