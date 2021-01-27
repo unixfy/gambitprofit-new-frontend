@@ -11,11 +11,14 @@
   "dependencies": {
     "@nuxt/content": "^1.9.0",
     "@nuxtjs/axios": "^5.12.2",
+    "@nuxtjs/firebase": "^7.4.1",
     "@nuxtjs/moment": "^1.6.1",
     "@nuxtjs/pwa": "^3.0.2",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/strapi": "^0.1.9",
     "core-js": "^3.6.5",
+    "firebase": "^8.2.4",
+    "firebaseui": "^4.7.1",
     "fuse.js": "^6.4.5",
     "nuxt": "^2.14.6"
   },

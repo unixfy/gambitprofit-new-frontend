@@ -51,9 +51,26 @@ export default {
     '@nuxtjs/pwa',
     // https://go.nuxtjs.dev/content
     '@nuxt/content',
-    '@nuxtjs/sitemap'
+    '@nuxtjs/sitemap',
+    '@nuxtjs/firebase'
   ],
 
+  // Firebase options
+  firebase: {
+    config: {
+      apiKey: "AIzaSyBQurQkGR2Lg07MiXnd2vKkJLnOBpMpoDE",
+      authDomain: "gambitprofit.firebaseapp.com",
+      databaseURL: "https://gambitprofit.firebaseio.com",
+      projectId: "gambitprofit",
+      storageBucket: "gambitprofit.appspot.com",
+      messagingSenderId: "920601018579",
+      appId: "1:920601018579:web:f53771f6062a8902dd5426",
+      measurementId: "G-9WN6X1RHKM"
+    },
+    services: {
+      auth: true
+    }
+  },
   // PWA
   pwa: {
     icon: {
