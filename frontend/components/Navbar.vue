@@ -61,15 +61,15 @@
         Toggle dark mode
       </v-tooltip>
 
-      <v-tooltip left>
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn v-bind="attrs" v-on="on" icon
-                aria-label="Account" to="/account">
-            <v-icon>mdi-account-circle</v-icon>
-          </v-btn>
-        </template>
-        Account
-      </v-tooltip>
+<!--      <v-tooltip left>-->
+<!--        <template v-slot:activator="{ on, attrs }">-->
+<!--          <v-btn v-bind="attrs" v-on="on" icon-->
+<!--                aria-label="Account" to="/account">-->
+<!--            <v-icon>mdi-account-circle</v-icon>-->
+<!--          </v-btn>-->
+<!--        </template>-->
+<!--        Account-->
+<!--      </v-tooltip>-->
 
     </v-app-bar>
   </v-card>
@@ -107,11 +107,11 @@ export default {
           title: 'Notifications',
           to: '/notifications'
         },
-        {
-          icon: 'mdi-account-circle',
-          title: 'Account',
-          to: '/account'
-        },
+        // {
+        //   icon: 'mdi-account-circle',
+        //   title: 'Account',
+        //   to: '/account'
+        // },
         {
           icon: 'mdi-help-circle',
           title: 'Help',

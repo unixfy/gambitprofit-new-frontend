@@ -29,6 +29,18 @@
       <v-card-title>Latest Gambit Plays</v-card-title>
       <v-card-subtitle>Data is retrieved from our API.</v-card-subtitle>
       <v-card-text>
+        <v-alert
+          border="left"
+          text
+          type="warning"
+          elevation="3"
+          color="red"
+        >
+          <b>Gambit Rewards update 02/01 10:00 EST</b>: This site has been updated to reflect the new 5% discount.
+          <br>
+          Additionally, email notifications <b>are no longer being sent</b> due to an extreme pricing change by our email service provider.
+          A new system for email notifications and push notifications will be rolling out soon :)
+        </v-alert>
         <PlaysDisplay />
       </v-card-text>
     </v-card>

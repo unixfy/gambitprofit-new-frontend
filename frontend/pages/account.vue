@@ -131,18 +131,83 @@
                 color="primary"
                 elevation="2"
                 large
-              >Change password/email
+                @click.stop="accountSettingsDialog = true"
+              >Account Settings
               </v-btn>
             </v-card-text>
           </v-card>
-
-
-
-
         </div>
       </v-card-text>
     </v-card>
 
+    <!-- Account settings dialog (change pw/email/etc) -->
+    <v-dialog
+      v-model="accountSettingsDialog"
+      width="500"
+      persistent
+      v-if="authenticatedUser"
+    >
+      <v-card>
+          <v-toolbar color="primary" dark>
+            <v-toolbar-title>Account Settings</v-toolbar-title>
+
+            <v-spacer></v-spacer>
+
+            <v-btn icon @click="accountSettingsDialog = false">
+              <v-icon>
+                mdi-close
+              </v-icon>
+            </v-btn>
+          </v-toolbar>
+        <v-card-text>
+            <v-card outlined class="my-3">
+              <v-card-title>Change Email</v-card-title>
+              <v-card-text>
+                <v-form onSubmit="return false;">
+                  <p>Your current email: {{ authenticatedUser.email }}</p>
+                  <v-text-field label="Email" type="email" outlined></v-text-field>
+                  <v-btn
+                    block
+                    color="primary"
+                    elevation="4"
+                    type="submit"
+                  >
+                    Save
+                  </v-btn>
+                </v-form>
+              </v-card-text>
+            </v-card>
+            <v-card outlined class="my-3">
+              <v-card-title>Change Password</v-card-title>
+              <v-card-text>
+                <v-form onSubmit="return false;">
+                  <v-text-field label="New Password" type="password" outlined></v-text-field>
+                  <v-btn
+                    block
+                    color="primary"
+                    elevation="4"
+                    type="submit"
+                  >
+                    Save
+                  </v-btn>
+                </v-form>
+              </v-card-text>
+
+            </v-card>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn
+            color="primary"
+            text
+            @click="accountSettingsDialog = false"
+          >
+            Close
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <div v-else></div>
   </div>
 </template>
 
@@ -157,7 +222,8 @@ export default {
   },
   data() {
     return {
-      authenticatedUser: null
+      authenticatedUser: null,
+      accountSettingsDialog: false
     }
   },
   methods: {
