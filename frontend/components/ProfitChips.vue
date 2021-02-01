@@ -35,7 +35,7 @@ export default {
   data() {
     return {
       // The actual SB cost of 1 gambit token
-      discountPercentage: 0.90,
+      discountPercentage: 0.95,
       // Prevent tokens from updating when the token field is changed
       tokensVal: this.tokens
     }
