@@ -37,9 +37,6 @@
           color="red"
         >
           <b>Gambit Rewards update 02/01 10:00 EST</b>: This site has been updated to reflect the new 5% discount.
-          <br>
-          Additionally, email notifications <b>are no longer being sent</b> due to an extreme pricing change by our email service provider.
-          A new system for email notifications and push notifications will be rolling out soon :)
         </v-alert>
         <PlaysDisplay />
       </v-card-text>
