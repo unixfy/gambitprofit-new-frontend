@@ -124,8 +124,8 @@ export default {
         },
         {
           icon: 'mdi-comment-quote',
-          title: 'Send feedback',
-          href: 'https://jira.unixfy.net/rest/collectors/1.0/template/form/67f45fd4'
+          title: 'Suggest a feature',
+          href: 'https://feedback.gambitprofit.com'
         }
       ],
       title: 'GambitProfit'
