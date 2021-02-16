@@ -71,50 +71,6 @@
 
           <v-card outlined class="my-3">
             <v-card-title>
-              Subscribe to Email Notifications
-            </v-card-title>
-            <v-card-subtitle>
-              Be notified for good plays at the email attached to your account.
-            </v-card-subtitle>
-            <v-card-text>
-              <v-btn large color="primary">Subscribe</v-btn>
-            </v-card-text>
-          </v-card>
-
-          <v-card outlined class="my-3">
-            <v-card-title>
-              Subscribe to Web Push Notifications
-            </v-card-title>
-            <v-card-subtitle>
-              You will receive a notification on your browser when a good play is found.
-            </v-card-subtitle>
-            <v-card-text>
-              <v-alert colored-border border="left" type="info" class="mb-3" elevation="3">
-                Your browser will prompt you for consent when you click "Enable".
-              </v-alert>
-
-              <v-btn large color="primary">Enable</v-btn>
-            </v-card-text>
-          </v-card>
-
-          <v-card outlined class="my-3">
-            <v-card-title>
-              Subscribe to Discord notifications
-            </v-card-title>
-            <v-card-subtitle>
-              You will be mentioned when a good play is found.
-            </v-card-subtitle>
-            <v-card-text>
-              <v-alert colored-border border="left" type="info" class="mb-3" elevation="3">
-                Notifications are also available in the unofficial Swagbucks server and the Beermoney server.
-              </v-alert>
-
-              <v-btn large color="primary" rel="noopener" href="https://go.unixfy.net/hca" target="_blank">Join Discord Server</v-btn>
-            </v-card-text>
-          </v-card>
-
-          <v-card outlined class="my-3">
-            <v-card-title>
               Account Security
             </v-card-title>
             <v-card-text>
