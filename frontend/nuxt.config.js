@@ -101,7 +101,7 @@ export default {
     // Thx https://medium.com/javascript-in-plain-english/generating-sitemap-entries-for-nuxt-content-f7eb7b5fdb3b
     // Note: We use slug instead of path because our files are in a subdirectory, but their slug is not
     routes: async () => {
-      const { $content } = require('@nuxt/content')
+      const {$content} = require('@nuxt/content')
 
       const pages = await $content('site-pages')
         .only(['slug'])
@@ -145,5 +145,7 @@ export default {
   },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
-  build: {}
+  build: {
+    transpile: ['vuetify/lib']
+  }
 }
