@@ -1,6 +1,6 @@
 <template>
   <ClientOnly>
-    <div>
+    <div style="background: cyan;">
       <!-- Configuration UI -->
       <v-expansion-panels class="mb-5 elevation-2">
         <v-expansion-panel>

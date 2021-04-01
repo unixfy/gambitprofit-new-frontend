@@ -1,5 +1,5 @@
 <template>
-  <v-app>
+  <v-app style="background: magenta; font-family: 'Comic Sans MS', 'Comic Sans', 'Chalkboard SE', 'Comic Neue', cursive, sans-serif;">
     <Navbar />
     <v-main>
       <v-container>
