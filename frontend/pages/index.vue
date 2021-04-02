@@ -36,13 +36,9 @@
           elevation="3"
           color="purple"
         >
-          <b>Gambit Rewards update 02/25</b>: Swagbucks have announced that Gambit Rewards redemptions will no longer count for daily goals effective 1 March. This makes Gambit hedging much less viable.
+          <b>Gambit Rewards update 04/02</b>: Due to "illicit activity", there are no more discounts on Gambit gift cards. <b>Hedging is therefore not possible</b>.
           <br>
-          I want to say thanks to all GambitProfit users for your support and especially to those who have donated. It means a lot to me ❤️
-          <br>
-          This site will remain up for the forseeable future; however, development of new features is suspended for now. 
-          <br>
-          - Unixfy
+          This site will remain up for the forseeable future; however, development of new features is suspended for now.
         </v-alert>
         <PlaysDisplay />
       </v-card-text>
