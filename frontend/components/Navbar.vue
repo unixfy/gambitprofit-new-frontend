@@ -5,7 +5,6 @@
       app
       clipped
       fixed
-      style="background: magenta;"
     >
       <v-list>
         <v-list-item
@@ -113,11 +112,6 @@ export default {
         //   title: 'Account',
         //   to: '/account'
         // },
-        {
-          icon: 'mdi-help-circle',
-          title: 'Help',
-          href: 'https://twitter.com/gretathunberg'
-        },
         {
           icon: 'mdi-help-circle',
           title: 'Help',
