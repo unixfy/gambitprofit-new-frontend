@@ -226,7 +226,7 @@
                 :href="item.PlayUrl"
                 aria-label="Open on Gambit Rewards"
                 icon
-                rel="noopener"
+                rel="noopener noreferrer"
                 target="_blank"
               >
                 <v-icon>mdi-open-in-new</v-icon>
