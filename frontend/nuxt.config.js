@@ -81,7 +81,7 @@ export default {
       name: "GambitProfit",
       description: "The easy way to profit from Gambit Rewards!",
       ogSiteName: "Unixfy",
-      ogHost: "https://gambitprofit.netlify.app",
+      ogHost: "https://gambitprofit.com",
       ogImage: true,
       ogUrl: "https://gambitprofit.com",
       theme_color: "#03A9F4",
