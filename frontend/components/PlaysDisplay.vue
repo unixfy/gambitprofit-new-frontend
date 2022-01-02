@@ -8,127 +8,162 @@
             <span class="text-h6">Settings</span>
           </v-expansion-panel-header>
           <v-expansion-panel-content>
-                <v-row>
-                  <v-col cols="12" md="6">
-                    <v-card outlined>
-                      <v-card-title>Token Amount</v-card-title>
-                      <v-card-subtitle>The number of tokens you wish to bet.</v-card-subtitle>
-                      <v-card-text>
-                        <!--                  This form will be disabled if the rules are not met -->
-                        <v-form v-model="tokens_form_valid" onSubmit="return false;" @submit="setTokens">
-                          <v-text-field
-                            v-model="tokens"
-                            :disabled="preload"
-                            :rules="tokens_field_rules"
-                            aria-label="Token Amount"
-                            class="mt-0 pt-0"
-                            dense
-                            hide-details="auto"
-                            label="Token Amount"
-                            outlined
-                            single-line
-                            suffix="tokens"
-                            type="number"
-                          >
-                          </v-text-field>
+            <v-row>
+              <v-col cols="12" md="6">
+                <v-card outlined>
+                  <v-card-title>Token Amount</v-card-title>
+                  <v-card-subtitle>The number of tokens you wish to bet.</v-card-subtitle>
+                  <v-card-text>
+                    <!--                  This form will be disabled if the rules are not met -->
+                    <v-form v-model="tokens_form_valid" onSubmit="return false;" @submit="setTokens">
+                      <v-text-field
+                        v-model="tokens"
+                        :disabled="preload"
+                        :rules="tokens_field_rules"
+                        aria-label="Token Amount"
+                        class="mt-0 pt-0"
+                        dense
+                        hide-details="auto"
+                        label="Token Amount"
+                        outlined
+                        single-line
+                        suffix="tokens"
+                        type="number"
+                      >
+                      </v-text-field>
 
-                          <v-btn-toggle
-                            v-model="tokens"
-                            :disabled="preload"
-                            class="my-3"
-                            color="primary"
-                            dense
-                            style="width:100%;"
-                          >
-                            <v-btn value="1000">
-                              1000
-                            </v-btn>
+                      <v-btn-toggle
+                        v-model="tokens"
+                        :disabled="preload"
+                        class="my-3"
+                        color="primary"
+                        dense
+                        style="width:100%;"
+                      >
+                        <v-btn value="1000">
+                          1000
+                        </v-btn>
 
-                            <v-btn value="2500">
-                              2500
-                            </v-btn>
+                        <v-btn value="2500">
+                          2500
+                        </v-btn>
 
-                            <v-btn value="5000">
-                              5000
-                            </v-btn>
+                        <v-btn value="5000">
+                          5000
+                        </v-btn>
 
-                            <v-btn value="10000">
-                              10000
-                            </v-btn>
-                          </v-btn-toggle>
+                        <v-btn value="10000">
+                          10000
+                        </v-btn>
+                      </v-btn-toggle>
 
-                          <v-btn
-                            :disabled="!tokens_form_valid || preload"
-                            block
-                            color="primary"
-                            elevation="4"
-                            large
-                            type="submit"
-                          >
-                            Save
-                          </v-btn>
-                        </v-form>
-                      </v-card-text>
-                    </v-card>
-                  </v-col>
+                      <v-btn
+                        :disabled="!tokens_form_valid || preload"
+                        block
+                        color="primary"
+                        elevation="4"
+                        large
+                        type="submit"
+                      >
+                        Save
+                      </v-btn>
+                    </v-form>
+                  </v-card-text>
+                </v-card>
+                <v-card outlined class="mt-4">
+                  <v-card-title>Historical Data</v-card-title>
+                  <v-card-subtitle>View plays on a past date.</v-card-subtitle>
+                  <v-card-text>
+                    <v-form v-model="date_form_valid" onSubmit="return false;" @submit="loadData">
+                      <v-text-field
+                        v-model="date"
+                        :rules="date_field_rules"
+                        :disabled="preload"
+                        aria-label="Date"
+                        class="mt-0 mb-4 pt-0"
+                        dense
+                        hide-details="auto"
+                        label="Date"
+                        outlined
+                        single-line
+                        type="date"
+                        :min="min_date"
+                        :max="max_date"
+                      >
+                      </v-text-field>
 
-                  <v-col cols="12" md="6">
-                    <v-card outlined>
-                      <v-card-title>
-                        Search & Sort
-                      </v-card-title>
-                      <v-card-subtitle>Find plays by name, date, or odds.</v-card-subtitle>
-                      <v-card-text>
-                        <v-form onSubmit="return false;" @submit="loadData">
-                          <v-text-field
-                            v-model="search_term"
-                            :disabled="preload"
-                            append-icon="mdi-magnify"
-                            class="mt-0 pt-0"
-                            clearable
-                            dense
-                            hide-details="auto"
-                            label="Search by name/URL"
-                            outlined
-                            @click:append="loadData"
-                            @click:clear="loadData"
-                          >
-                          </v-text-field>
-                        </v-form>
+                      <v-btn
+                        :disabled="!date_form_valid || preload"
+                        block
+                        color="primary"
+                        elevation="4"
+                        large
+                        type="submit"
+                      >
+                        Send
+                      </v-btn>
+                    </v-form>
+                  </v-card-text>
+                </v-card>
+              </v-col>
 
-                        <p>Sort by:</p>
-                        <v-btn-toggle
-                          v-model="sort_by"
-                          color="primary"
-                          dense
-                          elevation="4"
-                          mandatory
-                        >
+              <v-col cols="12" md="6">
+                <v-card outlined>
+                  <v-card-title>
+                    Search & Sort
+                  </v-card-title>
+                  <v-card-subtitle>Find plays by name, date, or odds.</v-card-subtitle>
+                  <v-card-text>
+                    <v-form onSubmit="return false;" @submit="loadData">
+                      <v-text-field
+                        v-model="search_term"
+                        :disabled="preload"
+                        append-icon="mdi-magnify"
+                        class="mt-0 pt-0"
+                        clearable
+                        dense
+                        hide-details="auto"
+                        label="Search by name/URL"
+                        outlined
+                        @click:append="loadData"
+                        @click:clear="loadData"
+                      >
+                      </v-text-field>
+                    </v-form>
 
-                          <v-btn
-                            :disabled="preload"
-                            @click="loadData"
-                          >
-                            Date
-                          </v-btn>
-                          <v-btn
-                            :disabled="preload"
-                            @click="loadData"
-                          >
-                            Profit
-                          </v-btn>
-                        </v-btn-toggle>
+                    <p>Sort by:</p>
+                    <v-btn-toggle
+                      v-model="sort_by"
+                      color="primary"
+                      dense
+                      elevation="4"
+                      mandatory
+                    >
 
-                        <v-switch
-                          v-model="show_all"
-                          dense
-                          label="Show all plays?"
-                          @click="loadData"
-                        ></v-switch>
-                      </v-card-text>
-                    </v-card>
-                  </v-col>
-                </v-row>
+                      <v-btn
+                        :disabled="preload"
+                        @click="loadData"
+                      >
+                        Date
+                      </v-btn>
+                      <v-btn
+                        :disabled="preload"
+                        @click="loadData"
+                      >
+                        Profit
+                      </v-btn>
+                    </v-btn-toggle>
+
+                    <v-switch
+                      v-model="show_all"
+                      dense
+                      label="Show all plays?"
+                      @click="loadData"
+                    ></v-switch>
+                  </v-card-text>
+                </v-card>
+              </v-col>
+            </v-row>
 
           </v-expansion-panel-content>
         </v-expansion-panel>
@@ -265,20 +300,35 @@ export default {
       preload: true,
       // Init tokens amount as 1 and it will be set later from the localstorage
       tokens: 1,
+      // Init historical date picker as blank
+      date: '',
       // Whether all plays are shown by default
       show_all: true,
       // Init form validation
       tokens_form_valid: false,
+      date_form_valid: false,
       // Whether cards or table is displayed
       display_mode: 0,
 
       // Configure max/min for the tokens field
       min_tokens: 50,
       max_tokens: 200000,
+
+      // Configure max/min for dates field
+      min_date: '2020-08-29',
+      max_date: '2021-10-21',
+
       // Rules for the tokens amount field
       tokens_field_rules: [
         v => v >= this.min_tokens || `Min ${this.min_tokens}`,
         v => v <= this.max_tokens || `Max ${this.max_tokens}`,
+      ],
+
+      // Rules for date field
+      date_field_rules: [
+        v => moment(v).isValid() || `Invalid date`,
+        v => moment(v).diff(moment(this.min_date)) >= 0 || `Must be on or after ${moment(this.min_date, "YYYY-MM-DD").format("LL")}`,
+        v => moment(v).diff(moment(this.max_date)) <= 0 || `Must be on or before ${moment(this.max_date, "YYYY-MM-DD").format("LL")}`
       ],
 
       // Default sort
@@ -347,7 +397,14 @@ export default {
     async loadData() {
       this.plays = []
       this.preload = true
-      this.rawdata = await this.$strapi.$http.$get(`gambit-plays/tokens/${this.tokens}?_limit=250&_sort=PlayDate:DESC`)
+
+      // Filter by date if it's set
+      if (this.date !== '') {
+        this.rawdata = await this.$strapi.$http.$get(`gambit-plays/tokens/${this.tokens}?_limit=250&_sort=PlayDate:DESC&PlayDate_eq=${this.date}T00:00:00.000Z`)
+      } else {
+        this.rawdata = await this.$strapi.$http.$get(`gambit-plays/tokens/${this.tokens}?_limit=250&_sort=PlayDate:DESC`)
+      }
+
       this.plays = this.processPlays(this.rawdata)
       this.preload = false
     },
@@ -357,8 +414,8 @@ export default {
         if (this.show_all === false && rawdata[i].Calc.Profitable === false) {
           rawdata.splice(i, 1)
           i--
-          // Drop all items which have already started
-        } else if (moment(rawdata[i].PlayDate).diff() < -1) {
+          // Drop all items which have already started if date is not set
+        } else if (!(this.date) && moment(rawdata[i].PlayDate).diff() < -1) {
           rawdata.splice(i, 1)
           i--
         } else {
