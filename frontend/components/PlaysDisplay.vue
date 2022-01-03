@@ -72,7 +72,7 @@
                 </v-card>
                 <v-card outlined class="mt-4">
                   <v-card-title>Historical Data</v-card-title>
-                  <v-card-subtitle>View plays on a past date.</v-card-subtitle>
+                  <v-card-subtitle>View plays on a past date. <b>Note this search uses UTC while dates displayed are in your local timezone!</b></v-card-subtitle>
                   <v-card-text>
                     <v-form v-model="date_form_valid" onSubmit="return false;" @submit="loadData">
                       <v-text-field
