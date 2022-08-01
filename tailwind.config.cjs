@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{html,js,svelte,ts}'],
+  darkMode: 'class',
   theme: {
     fontFamily: {
       sans: ['Inter', 'ui-sans-serif',
@@ -21,5 +22,5 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [],
+  plugins: [require("daisyui")],
 }
