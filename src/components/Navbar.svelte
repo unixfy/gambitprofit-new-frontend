@@ -34,7 +34,7 @@
 					</label>
 					<ul
 						tabindex="0"
-						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-gray-100 dark:bg-slate-800 rounded-box w-52"
 					>
 						<li><a href="/">Home</a></li>
 						<li><a href="/faq">FAQ</a></li>
