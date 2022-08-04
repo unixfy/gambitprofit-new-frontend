@@ -58,18 +58,26 @@
 						<li><a href="/help">Help</a></li>
 					</ul>
 				</div>
-				<a
-					class="btn"
-					aria-label="Join Discord server"
-					href="https://go.unixfy.net/hca"
-					target="_blank"
-					rel="noopener"
-				>
-					<i class="fa-brands fa-discord" />
-				</a>
-				<button class="btn" aria-label="Toggle dark mode" on:click={toggleDarkMode}>
-					<i class="fa-solid fa-sun" />
-				</button>
+				<div class="tooltip tooltip-left" data-tip="Join our Discord server">
+					<a
+						class="btn btn-primary"
+						aria-label="Join our Discord server"
+						href="https://go.unixfy.net/hca"
+						target="_blank"
+						rel="noopener"
+					>
+						<i class="fa-brands fa-discord" />
+					</a>
+				</div>
+				<div class="tooltip tooltip-left" data-tip="Toggle dark mode">
+					<button class="btn btn-primary" aria-label="Toggle dark mode" on:click={toggleDarkMode}>
+						{#if $darkmode}
+							<i class="fa-solid fa-sun" />
+						{:else}
+							<i class="fa-solid fa-moon" />
+						{/if}
+					</button>
+				</div>
 			</div>
 		</div>
 	</div>
