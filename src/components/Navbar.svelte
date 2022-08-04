@@ -1,0 +1,76 @@
+<script>
+	import { darkmode } from '../stores';
+
+	let mobilemenu = false;
+
+	let toggleDarkMode = function () {
+		$darkmode = !$darkmode;
+	};
+
+	let toggleMobileMenu = function () {
+		mobilemenu = !mobilemenu;
+	};
+</script>
+
+<div class="bg-gray-100 dark:bg-slate-800 dark:text-white">
+	<div class="ct">
+		<div class="navbar">
+			<div class="navbar-start">
+				<div class="dropdown">
+					<label tabindex="0" class="btn btn-ghost lg:hidden">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							class="h-5 w-5"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+							><path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M4 6h16M4 12h8m-8 6h16"
+							/></svg
+						>
+					</label>
+					<ul
+						tabindex="0"
+						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+					>
+						<li><a href="/">Home</a></li>
+						<li><a href="/faq">FAQ</a></li>
+						<li><a href="/api">API</a></li>
+						<li><a href="/donate">Donate</a></li>
+						<li><a href="/notifications">Notifications</a></li>
+						<li><a href="/help">Help</a></li>
+					</ul>
+				</div>
+				<a class="btn btn-ghost normal-case text-xl" href="/">GambitProfit</a>
+			</div>
+			<div class="navbar-center hidden lg:flex" />
+			<div class="navbar-end space-x-4">
+				<div class="hidden lg:flex">
+					<ul class="menu menu-horizontal p-0">
+						<li><a href="/">Home</a></li>
+						<li><a href="/faq">FAQ</a></li>
+						<li><a href="/api">API</a></li>
+						<li><a href="/donate">Donate</a></li>
+						<li><a href="/notifications">Notifications</a></li>
+						<li><a href="/help">Help</a></li>
+					</ul>
+				</div>
+				<a
+					class="btn"
+					aria-label="Join Discord server"
+					href="https://go.unixfy.net/hca"
+					target="_blank"
+					rel="noopener"
+				>
+					<i class="fa-brands fa-discord" />
+				</a>
+				<button class="btn" aria-label="Toggle dark mode" on:click={toggleDarkMode}>
+					<i class="fa-solid fa-sun" />
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

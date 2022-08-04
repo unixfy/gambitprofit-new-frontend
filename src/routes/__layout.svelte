@@ -3,6 +3,9 @@
 	import '../app.css';
 	import { darkmode } from '../stores';
 	import { onMount } from 'svelte';
+	import Navbar from '@components/Navbar.svelte';
+	import Footer from '@components/Footer.svelte';
+	import { browser } from '$app/env';
 
 	onMount(async () => {
 		if (browser) {
@@ -16,4 +19,10 @@
 	});
 </script>
 
-<div class="min-h-screen"><slot /></div>
+<Navbar />
+
+<div class="min-h-screen">
+	<slot />
+</div>
+
+<Footer />
