@@ -23,6 +23,5 @@
 			</p>
 		</div>
 	</div>
-
-	<MatchDisplay />
 </div>
+<MatchDisplay />
