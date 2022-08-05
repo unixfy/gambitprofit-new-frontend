@@ -9,22 +9,22 @@
 	let historical_date = '';
 </script>
 
-<div class="drawer drawer-mobile h-auto pb-8">
+<div class="drawer drawer-mobile h-auto pb-8 px-2 lg:px-0">
 	<input id="settings-drawer" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col">
 		<div class="lg:px-4">
 			<div class="flex justify-between pt-2 pb-4">
 				<h1 class="font-bold text-2xl my-auto">Gambit Plays</h1>
-				<div>
+				<div class="flex space-x-2">
 					<label
 						for="settings-drawer"
-						class="btn btn-primary drawer-button lg:hidden"
+						class="btn btn-primary btn-square drawer-button lg:hidden"
 						aria-label="Show filters"><i class="fa-solid fa-sliders" /></label
 					>
 					<button class="btn btn-primary btn-square" aria-label="Refresh data" class:loading>
 						{#if !loading}
 							<i class="fa-solid fa-refresh" />
-							{/if}
+						{/if}
 					</button>
 				</div>
 			</div>
