@@ -9,10 +9,10 @@
 	let historical_date = '';
 </script>
 
-<div class="drawer drawer-mobile">
+<div class="drawer drawer-mobile h-auto pb-8">
 	<input id="settings-drawer" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col">
-		<div class="lg:pl-4">
+		<div class="lg:px-4">
 			<div class="flex justify-between pt-2 pb-4">
 				<h1 class="font-bold text-2xl my-auto">Gambit Plays</h1>
 				<div>
