@@ -19,9 +19,9 @@
 		</div>
 
 		<div class="flex flex-col space-y-2">
-			<div class="tabs tabs-boxed bg-base-100 dark:bg-slate-800 px-0 pt-0 pb-2">
-				<a class="tab tab-active">Pick the Winner</a>
-				<a class="tab">Spread</a>
+			<div class="tabs tabs-boxed bg-base-100 dark:bg-slate-900 p-0 mb-2">
+				<a class="tab tab-active dark:text-white">Pick the Winner</a>
+				<a class="tab dark:text-white">Spread</a>
 			</div>
 
 			<div class="stats stats-horizontal p-1 dark:bg-slate-900 dark:text-white">
