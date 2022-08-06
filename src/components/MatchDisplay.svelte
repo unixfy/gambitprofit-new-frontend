@@ -1,4 +1,6 @@
 <script>
+	import MatchCard from './MatchCard.svelte';
+
 	let loading = true;
 	let token_amount = 1000;
 	let search_term = '';
@@ -9,10 +11,10 @@
 	let historical_date = '';
 </script>
 
-<div class="drawer drawer-mobile h-auto pb-8 px-2 lg:px-0">
+<div class="drawer drawer-mobile h-auto pb-8">
 	<input id="settings-drawer" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col">
-		<div class="lg:px-4">
+		<div class="px-2 lg:px-4">
 			<div class="flex justify-between pt-2 pb-4">
 				<h1 class="font-bold text-2xl my-auto">Gambit Plays</h1>
 				<div class="flex space-x-2">
@@ -28,9 +30,27 @@
 					</button>
 				</div>
 			</div>
-			<div class="grid xl:grid-cols-4 md:grid-cols-3 grid-cols-1 gap-4">
+			<div class="grid xl:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4">
 				{#each Array(16) as item}
-					<div class="p-32 bg-gray-100 animate-pulse" />
+					<MatchCard />
+				{:else}
+					<div class="alert alert-warning col-span-4">
+						<div>
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								class="stroke-current flex-shrink-0 h-6 w-6"
+								fill="none"
+								viewBox="0 0 24 24"
+								><path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									stroke-width="2"
+									d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
+								/></svg
+							>
+						<span>Oops, looks like there are no plays at this time. Try looking at our historical data.</span>
+						</div>
+					</div>
 				{/each}
 			</div>
 		</div>
@@ -110,7 +130,7 @@
 								type="radio"
 								name="sort_by"
 								value="profit"
-								data-title="Profit"
+								data-title="No Risk Profit"
 								class="btn"
 								bind:group={sort_by}
 							/>

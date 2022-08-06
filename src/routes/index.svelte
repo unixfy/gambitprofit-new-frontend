@@ -24,4 +24,7 @@
 		</div>
 	</div>
 </div>
-<MatchDisplay />
+
+<div class="max-w-[1920px] mx-auto">
+	<MatchDisplay />
+</div>
