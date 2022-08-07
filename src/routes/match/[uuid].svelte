@@ -1,8 +1,12 @@
 <script>
 	import PageHeader from '@components/PageHeader.svelte';
 	import { page } from '$app/stores';
+	import dayjs from "dayjs/esm";
+	import relativeTime from "dayjs/esm/plugin/relativeTime";
 
 	export let match;
+
+	dayjs.extend(relativeTime)
 
 	let token_amount = $page.url.searchParams.get('tokens');
 
@@ -13,7 +17,7 @@
 	}
 </script>
 
-<PageHeader title="Match: {match.name}" subtitle={match.datetime} />
+<PageHeader title="Match: {match.name}" subtitle={dayjs(match.datetime).format('ddd, MMM D, YYYY h:mm A')} />
 
 <div class="content-wrapper">
 	<div class="flex flex-col space-y-4">
@@ -89,7 +93,7 @@
 					<i class="fa-solid fa-clock fa-2x" />
 				</div>
 				<div class="stat-title">Cutoff At</div>
-				<div class="stat-value text-3xl lg:text-4xl">{match.cutoff_datetime}</div>
+				<div class="stat-value text-3xl lg:text-4xl">{dayjs(match.cutoff_datetime).fromNow()}</div>
 			</div>
 
 			<div class="stat">
