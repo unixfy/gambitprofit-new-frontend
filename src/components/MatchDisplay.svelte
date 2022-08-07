@@ -74,6 +74,7 @@
 							type="number"
 							placeholder="1000"
 							class="input input-bordered w-full"
+							min="50"
 							bind:value={token_amount}
 						/>
 						<div class="btn-group w-full">
