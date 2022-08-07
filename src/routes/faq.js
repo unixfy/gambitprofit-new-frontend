@@ -12,6 +12,10 @@ export async function GET() {
                     "a": "I am the most experienced person when it comes to recommending Gambit plays. I’ve been doing this since February 2020. But, don’t take my word for it. Many of my followers use the same method as I do and can report huge earnings as well!"
                 },
                 {
+                    "q": "What is the difference between reward and odds?",
+                    "a": "Odds are the raw payout from the sportsbook that provides Gambit's data (Intertops). Reward is what Gambit is willing to pay you, the user, for a line. Reward will be lower than odds in most cases because Gambit is interested in making a profit from their operation. It's kind of like a 'vig' except it's charged if you win (not if you lose)."
+                },
+                {
                     "q": "What is Gambit?",
                     "a": "Gambit Rewards is a sports “betting” website, where you can bet on sports/eSports games using a special currency called “Gambit tokens”. It’s really only worth using if you follow the strategies on this website, as the cuts they take make it quite poor for actual sports betting. If you want to actually bet on sports, there are many other (better) websites out there."
                 },
