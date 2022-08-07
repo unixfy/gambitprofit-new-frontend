@@ -7,13 +7,16 @@
 					href="https://app.gambitrewards.com"
 					rel="noreferer"
 					target="_blank"
-					class="ml-auto btn btn-circle btn-outline btn-primary dark:invert"
-					><i class="fa-solid fa-link" />
+					class="ml-auto btn btn-circle  btn-ghost"
+					><i class="fa-solid fa-arrow-up-right-from-square" />
 				</a>
 			</div>
 			<div class="tooltip tooltip-left" data-tip="More info about this match">
-				<a href="/match/asdfasfasfd" class="ml-2 btn btn-circle btn-outline btn-primary dark:invert">
-					<i class="fa-solid fa-info" />
+				<a
+					href="/match/asdfasfasfd"
+					class="ml-2 btn btn-circle btn-ghost"
+				>
+					<i class="fa-solid fa-file-lines" />
 				</a>
 			</div>
 		</div>
