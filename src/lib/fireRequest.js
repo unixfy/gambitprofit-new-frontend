@@ -1,4 +1,4 @@
-export async function fireRequest(path, method, queryparams, body) {
+export async function fireRequest(path, queryparams, method, body) {
     return fetch(
         import.meta.env.VITE_API_ENDPOINT +
         path +
