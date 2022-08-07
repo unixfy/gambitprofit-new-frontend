@@ -25,16 +25,11 @@
 }
 
 p>a {
-    @apply text-primary hover:text-secondary dark:text-purple-300 hover:dark:text-purple-200 transition-all link
+    @apply link
 }
 
 body {
-    @apply dark:bg-black dark:text-white transition-all
-}
-
-.input {
-    /* fix how disabled inputs look in darkmode */
-    @apply disabled:dark:brightness-50 
+    @apply bg-base-100 transition-all
 }
 
 /* jankily override the max-height set on sidebars by daisyui */

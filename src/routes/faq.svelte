@@ -11,7 +11,7 @@
 <div class="flex flex-col space-y-4 max-w-screen-sm mx-auto py-8 px-4">
 	{#each faqs as faq}
 		<div
-			class="collapse collapse-plus border border-gray-300 dark:border-slate-500 bg-gray-100 dark:bg-slate-800 rounded-box"
+			class="collapse collapse-plus border bg-base-100 rounded-box"
 		>
 			<input type="checkbox" />
 			<div class="collapse-title text-xl font-medium">{faq.q}</div>

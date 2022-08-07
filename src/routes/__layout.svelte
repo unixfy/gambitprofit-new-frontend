@@ -11,9 +11,9 @@
 		if (browser) {
 			// Enable darkmode automatically if it's saved in localstorage
 			if ($darkmode) {
-				document.documentElement.classList.add('dark');
+                document.documentElement.dataset.theme = 'dark';
 			} else {
-				document.documentElement.classList.remove('dark');
+                document.documentElement.dataset.theme = 'light';
 			}
 		}
 	});

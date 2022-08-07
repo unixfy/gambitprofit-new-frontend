@@ -41,7 +41,7 @@
 		</div>
 
 		<div
-			class="stats stats-vertical md:stats-horizontal bg-gray-100 dark:bg-slate-900 dark:text-white"
+			class="stats stats-vertical md:stats-horizontal bg-base-200"
 		>
 			<div class="stat">
 				<div class="stat-figure text-secondary">
@@ -69,10 +69,10 @@
 		</div>
 
 		<!-- display all the teams -->
-		<div class="bg-gray-100 dark:bg-slate-900 rounded-xl p-6">
+		<div class="rounded-xl p-6 bg-base-200">
 			<p class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Teams</p>
 			<div class="grid sm:grid-flow-col gap-4">
-				<div class="card border border-gray-300 dark:border-slate-700">
+				<div class="card border">
 					<div class="card-body">
 						<p class="card-title">Monkey Team</p>
 						<div>
@@ -85,7 +85,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card border border-gray-300 dark:border-slate-700">
+				<div class="card border">
 					<div class="card-body">
 						<p class="card-title">Monkey Team</p>
 						<div>
@@ -98,7 +98,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="card border border-gray-300 dark:border-slate-700">
+				<div class="card border">
 					<div class="card-body">
 						<p class="card-title">Monkey Team</p>
 						<div>
@@ -115,9 +115,9 @@
 		</div>
 
 		<!-- iterate over each bet type -->
-		<div class="bg-gray-100 dark:bg-slate-900 dark:text-white p-6 rounded-xl">
+		<div class="p-6 rounded-xl bg-base-200">
 			<p class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Pick the Odds</p>
-			<div class="grid grid-flow-row gap-12">
+			<div class="grid grid-flow-row gap-8">
 				<div class="grid md:grid-cols-2 grid-cols-1 gap-8">
 					<div class="stat p-0 m-auto place-items-center">
 						<div class="stat-title opacity-90 mb-2">
@@ -183,7 +183,7 @@
 			</div>
 		</div>
 
-		<div class="bg-gray-100 dark:bg-slate-900 dark:text-white p-6 rounded-xl">
+		<div class=" p-6 rounded-xl bg-base-200">
 			<p class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">Spread</p>
 		</div>
 	</div>

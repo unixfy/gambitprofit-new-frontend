@@ -36,9 +36,9 @@ const darkmodecalculator = function () {
             localStorage.setItem("darkmode", value.toString())
 
             if (value === true) {
-                document.documentElement.classList.add('dark');
+                document.documentElement.dataset.theme = 'dark';
             } else if (value === false) {
-                document.documentElement.classList.remove('dark');
+                document.documentElement.dataset.theme = 'light';
             }
         }
     })

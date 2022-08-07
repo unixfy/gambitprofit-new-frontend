@@ -3,9 +3,9 @@
 </script>
 
 <div class="hero homepage-bg">
-	<div class="hero-overlay bg-opacity-40 dark:bg-opacity-60" />
+	<div class="hero-overlay bg-opacity-40" />
 	<div class="hero-content py-12 px-8 min-h-[33vh] text-center text-neutral-content">
-		<div>
+		<div class="text-white">
 			<h1 class="mb-5 text-3xl sm:text-4xl font-bold">Welcome to 💰 GambitProfit</h1>
 			<p class="mb-5 text-lg sm:text-xl">The data portal for Gambit Rewards plays.</p>
 		</div>

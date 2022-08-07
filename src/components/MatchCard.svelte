@@ -1,4 +1,4 @@
-<div class="card bg-base-100 dark:bg-slate-900 dark:border-slate-700 shadow-lg border">
+<div class="card bg-base-100 shadow-lg border">
 	<div class="card-body px-4 py-2">
 		<div class="flex">
 			<p class="card-title my-auto text-ellipsis">Unixfy v. Team</p>
@@ -22,12 +22,12 @@
 		</div>
 
 		<div class="flex flex-col space-y-2">
-			<div class="tabs tabs-boxed bg-base-100 dark:bg-slate-900 p-0 mb-2">
-				<a class="tab tab-active dark:text-white">Pick the Winner</a>
-				<a class="tab dark:text-white">Spread</a>
+			<div class="tabs tabs-boxed bg-base-100 p-0 mb-2">
+				<a class="tab tab-active ">Pick the Winner</a>
+				<a class="tab ">Spread</a>
 			</div>
 
-			<div class="stats stats-horizontal p-1 dark:bg-slate-900 dark:text-white">
+			<div class="stats stats-horizontal p-1">
 				<div class="stat p-0 place-items-center">
 					<div class="stat-title text-sm">No-Risk Profit</div>
 					<div class="stat-value text-lg">5%</div>

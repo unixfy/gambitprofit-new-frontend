@@ -58,7 +58,7 @@
 	<div class="drawer-side shadow-lg">
 		<label for="settings-drawer" class="drawer-overlay" />
 		<div
-			class="menu px-2 py-2 w-80 bg-gray-100 dark:bg-slate-800 dark:text-white flex flex-col space-y-4"
+			class="menu px-2 py-2 w-80 bg-base-300 flex flex-col space-y-4"
 		>
 			<label
 				for="settings-drawer"
@@ -73,7 +73,7 @@
 						<input
 							type="number"
 							placeholder="1000"
-							class="input input-bordered w-full dark:bg-slate-900"
+							class="input input-bordered w-full"
 							bind:value={token_amount}
 						/>
 						<div class="btn-group w-full">
@@ -144,26 +144,26 @@
 					<div class="card-actions justify-end">
 						<div class="form-control w-full">
 							<label class="label cursor-pointer">
-								<span class="label-text dark:text-white">Show unprofitable?</span>
+								<span class="label-text ">Show unprofitable?</span>
 								<input type="checkbox" class="toggle" bind:checked={show_all} />
 							</label>
 						</div>
 						<div class="form-control w-full max-w-xs">
 							<label class="label">
-								<span class="label-text dark:text-white">Search by name, URL, etc.</span>
+								<span class="label-text ">Search by name, URL, etc.</span>
 							</label>
 							<input
 								type="text"
 								placeholder="Search"
-								class="input input-bordered w-full max-w-xs dark:bg-black"
+								class="input input-bordered w-full max-w-xs "
 								bind:value={search_term}
 							/>
 						</div>
 						<div class="form-control w-full max-w-xs">
 							<label class="label">
-								<span class="label-text dark:text-white">Filter by sport</span>
+								<span class="label-text ">Filter by sport</span>
 							</label>
-							<select class="select select-bordered dark:bg-black" bind:value={sport}>
+							<select class="select select-bordered " bind:value={sport}>
 								<option disabled selected>Pick one</option>
 								<option>Star Wars</option>
 								<option>Harry Potter</option>
@@ -183,21 +183,21 @@
 					<div class="card-actions justify-end">
 						<div class="form-control w-full">
 							<label class="label cursor-pointer">
-								<span class="label-text dark:text-white">Show historical plays?</span>
+								<span class="label-text ">Show historical plays?</span>
 								<input type="checkbox" class="toggle" bind:checked={historical} />
 							</label>
 						</div>
 
 						<div class="form-control w-full max-w-xs">
 							<label class="label">
-								<span class="label-text dark:text-white">Find plays on date (local time)</span>
+								<span class="label-text ">Find plays on date (local time)</span>
 							</label>
 							<!-- we have to set color-scheme dark to make the calendar icon thing white in darkmode -->
 							<input
 								type="date"
 								placeholder="2022-01-01"
 								min="2022-08-01"
-								class="input input-bordered w-full max-w-xs dark:bg-black dark:[color-scheme:dark]"
+								class="input input-bordered w-full max-w-xs"
 								bind:value={historical_date}
 								disabled={!historical}
 							/>
