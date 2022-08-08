@@ -2,6 +2,7 @@
 	import dayjs from 'dayjs/esm';
 	import relativeTime from 'dayjs/esm/plugin/relativeTime';
 	export let match;
+	export let tokens;
 
 	dayjs.extend(relativeTime);
 
@@ -26,7 +27,7 @@
 				</a>
 			</div>
 			<div class="tooltip tooltip-left" data-tip="More info about this match">
-				<a href="/match/{match.id}" class="ml-2 btn btn-circle btn-ghost">
+				<a href="/match/{match.id}?tokens={tokens}" class="ml-2 btn btn-circle btn-ghost">
 					<i class="fa-solid fa-file-lines" />
 				</a>
 			</div>

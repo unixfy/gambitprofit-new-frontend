@@ -77,7 +77,7 @@
 					<progress class="progress col-span-3 progress-primary" />
 				{:else}
 					{#each data.results as item}
-						<MatchCard match={item} />
+						<MatchCard match={item} tokens={tokens} />
 					{:else}
 						<div class="alert alert-warning col-span-4">
 							<div>
