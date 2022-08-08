@@ -3,30 +3,44 @@
 	import { fireRequest } from '$lib/fireRequest';
 	import { onMount } from 'svelte';
 
+	// utilities
 	let loading = true;
 	let data = {};
-	let token_amount = 1000;
-	let search_term = '';
-	let sort_by = 'datetime';
+	let sports = [];
+
+	// our filters
+	let tokens = 1000;
+	let search = '';
+	let sort = '-max_no_risk_profit_sb_percentage';
 	// whether to show non no-risk recommended - inverted
-	let show_all = false;
+	let show_not_no_risk_recommended = false;
 	let sport = '';
-	// whether to show plays that passed the cutoff - inverted
-	let historical = false;
-	let historical_date = '';
+	// whether to show plays that passed the cutoff
+	let show_cutoff_passed = false;
+	let datetime = '';
 
 	async function fetchData() {
 		loading = true;
 
 		let req = await fireRequest('/matches/', {
-			no_risk_recommended: true,
-			cutoff_passed: true
+			tokens: tokens,
+			search: search,
+			sort: sort,
+			sport: sport,
+			datetime: datetime,
+			no_risk_recommended: !show_not_no_risk_recommended,
+			cutoff_passed: show_cutoff_passed
 		});
 
 		let req_data = await req.json();
 
+		let sports_req = await fireRequest('/unique_sports/');
+		let sports_req_data = await sports_req.json();
+
 		data = req_data;
+		sports = sports_req_data;
 		loading = false;
+		console.log(data);
 	}
 
 	onMount(async () => {
@@ -46,7 +60,12 @@
 						class="btn btn-primary btn-square drawer-button lg:hidden"
 						aria-label="Show filters"><i class="fa-solid fa-sliders" /></label
 					>
-					<button class="btn btn-primary btn-square" aria-label="Refresh data" class:loading on:click="{fetchData}">
+					<button
+						class="btn btn-primary btn-square"
+						aria-label="Refresh data"
+						class:loading
+						on:click={fetchData}
+					>
 						{#if !loading}
 							<i class="fa-solid fa-refresh" />
 						{/if}
@@ -75,8 +94,8 @@
 									/></svg
 								>
 								<span
-									>Oops, looks like there are no plays at this time. Try looking at our historical
-									data.</span
+									>Oops, looks like there are no plays at this time for the filters you selected.
+									Try looking at our historical data or adjusting your filters.</span
 								>
 							</div>
 						</div>
@@ -103,40 +122,40 @@
 							placeholder="1000"
 							class="input input-bordered w-full"
 							min="50"
-							bind:value={token_amount}
+							bind:value={tokens}
 						/>
 						<div class="btn-group w-full">
 							<input
 								type="radio"
-								name="token_amount"
+								name="tokens"
 								value={1000}
 								data-title="1k"
 								class="btn"
-								bind:group={token_amount}
+								bind:group={tokens}
 							/>
 							<input
 								type="radio"
-								name="token_amount"
+								name="tokens"
 								value={2500}
 								data-title="2.5k"
 								class="btn"
-								bind:group={token_amount}
+								bind:group={tokens}
 							/>
 							<input
 								type="radio"
-								name="token_amount"
+								name="tokens"
 								value={5000}
 								data-title="5k"
 								class="btn"
-								bind:group={token_amount}
+								bind:group={tokens}
 							/>
 							<input
 								type="radio"
-								name="token_amount"
+								name="tokens"
 								value={10000}
 								data-title="10k"
 								class="btn"
-								bind:group={token_amount}
+								bind:group={tokens}
 							/>
 						</div>
 					</div>
@@ -146,23 +165,15 @@
 				<div class="card-body p-4">
 					<h2 class="card-title">Sort by</h2>
 					<div class="card-actions justify-end">
-						<div class="btn-group w-full">
-							<input
-								type="radio"
-								name="sort_by"
-								value="datetime"
-								data-title="Date"
-								class="btn"
-								bind:group={sort_by}
-							/>
-							<input
-								type="radio"
-								name="sort_by"
-								value="profit"
-								data-title="No Risk Profit"
-								class="btn"
-								bind:group={sort_by}
-							/>
+						<div class="form-control w-full max-w-xs">
+							<select class="select select-bordered" bind:value={sort} aria-label="Sort by">
+								<option value="-max_no_risk_profit_sb_percentage">No Risk Profit - Desc</option>
+								<option value="max_no_risk_profit_sb_percentage">No Risk Profit - Asc</option>
+								<option value="-cutoff_datetime">Cutoff Time - Desc</option>
+								<option value="cutoff_datetime">Cutoff Time - Asc</option>
+								<option value="-datetime">Date - Desc</option>
+								<option value="datetime">Date - Asc</option>
+							</select>
 						</div>
 					</div>
 				</div>
@@ -174,7 +185,7 @@
 						<div class="form-control w-full">
 							<label class="label cursor-pointer">
 								<span class="label-text ">Show unprofitable?</span>
-								<input type="checkbox" class="toggle" bind:checked={show_all} />
+								<input type="checkbox" class="toggle" bind:checked={show_not_no_risk_recommended} />
 							</label>
 						</div>
 						<div class="form-control w-full max-w-xs">
@@ -185,20 +196,18 @@
 								type="text"
 								placeholder="Search"
 								class="input input-bordered w-full max-w-xs "
-								bind:value={search_term}
+								bind:value={search}
 							/>
 						</div>
 						<div class="form-control w-full max-w-xs">
 							<label class="label">
 								<span class="label-text ">Filter by sport</span>
 							</label>
-							<select class="select select-bordered " bind:value={sport}>
+							<select class="select select-bordered" bind:value={sport}>
 								<option disabled selected>Pick one</option>
-								<option>Star Wars</option>
-								<option>Harry Potter</option>
-								<option>Lord of the Rings</option>
-								<option>Planet of the Apes</option>
-								<option>Star Trek</option>
+								{#each sports as sport}
+									<option>{sport}</option>
+								{/each}
 							</select>
 						</div>
 					</div>
@@ -213,29 +222,30 @@
 						<div class="form-control w-full">
 							<label class="label cursor-pointer">
 								<span class="label-text ">Show historical plays?</span>
-								<input type="checkbox" class="toggle" bind:checked={historical} />
+								<input type="checkbox" class="toggle" bind:checked={show_cutoff_passed} />
 							</label>
 						</div>
 
-						<div class="form-control w-full max-w-xs">
+						<!-- <div class="form-control w-full max-w-xs">
 							<label class="label">
 								<span class="label-text ">Find plays on date (local time)</span>
 							</label>
-							<!-- we have to set color-scheme dark to make the calendar icon thing white in darkmode -->
 							<input
 								type="date"
 								placeholder="2022-01-01"
 								min="2022-08-01"
 								class="input input-bordered w-full max-w-xs"
-								bind:value={historical_date}
-								disabled={!historical}
+								bind:value={datetime}
+								disabled={!show_cutoff_passed}
 							/>
-						</div>
+						</div> -->
 					</div>
 				</div>
 			</div>
 
-			<button class="btn btn-secondary btn-block" class:loading>Apply settings</button>
+			<button class="btn btn-secondary btn-block" class:loading on:click={fetchData}
+				>Apply settings</button
+			>
 		</div>
 	</div>
 </div>

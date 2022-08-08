@@ -1,8 +1,6 @@
 <script>
 	import dayjs from 'dayjs/esm';
 	import relativeTime from 'dayjs/esm/plugin/relativeTime';
-	import { onMount } from 'svelte';
-	import { not_equal } from 'svelte/internal';
 	export let match;
 
 	dayjs.extend(relativeTime);
@@ -12,10 +10,6 @@
 	function setActiveBettypeIndex(i) {
 		active_bettype_index = i;
 	}
-
-	onMount(async () => {
-		console.log(match);
-	});
 </script>
 
 <div class="card bg-base-100 shadow-lg border">
