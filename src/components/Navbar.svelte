@@ -60,7 +60,7 @@
 				</div>
 				<div class="tooltip tooltip-left" data-tip="Join our Discord server">
 					<a
-						class="btn btn-primary"
+						class="btn btn-primary btn-square"
 						aria-label="Join our Discord server"
 						href="https://go.unixfy.net/hca"
 						target="_blank"
@@ -70,7 +70,7 @@
 					</a>
 				</div>
 				<div class="tooltip tooltip-left" data-tip="Toggle dark mode">
-					<button class="btn btn-primary" aria-label="Toggle dark mode" on:click={toggleDarkMode}>
+					<button class="btn btn-primary btn-square" aria-label="Toggle dark mode" on:click={toggleDarkMode}>
 						{#if $darkmode}
 							<i class="fa-solid fa-sun" />
 						{:else}
