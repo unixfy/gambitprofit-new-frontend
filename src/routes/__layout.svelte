@@ -1,7 +1,7 @@
 <script>
 	import '@fontsource/inter';
 	import '../app.css';
-	import { darkmode } from '../stores';
+	import { darkmode, title } from '../stores';
 	import { onMount } from 'svelte';
 	import Navbar from '@components/Navbar.svelte';
 	import Footer from '@components/Footer.svelte';
@@ -21,8 +21,8 @@
 
 <svelte:head>
 	<!-- Primary Meta Tags -->
-	<title> | GambitProfit</title>
-	<meta name="title" content="| GambitProfit" />
+	<title>{$title} | GambitProfit</title>
+	<meta name="title" content="{$title} | GambitProfit" />
 	<meta
 		name="description"
 		content="The data portal for Gambit Rewards plays. Easily browse, sort, search through, and share plays!"

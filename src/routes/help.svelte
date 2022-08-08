@@ -1,6 +1,8 @@
 <script>
 	import PageHeader from '@components/PageHeader.svelte';
-	import Api from './api.svelte';
+	import {title} from '../stores';
+	
+	$title = 'Help'
 </script>
 
 <PageHeader title="Help" subtitle="Receive assistance with this site and its features" />

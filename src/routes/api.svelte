@@ -1,5 +1,8 @@
 <script>
 	import PageHeader from '@components/PageHeader.svelte';
+	import {title} from '../stores';
+	
+	$title = 'API'
 </script>
 
 <PageHeader

@@ -1,6 +1,10 @@
 <script>
 	import PageHeader from '../components/PageHeader.svelte';
 	export let faqs;
+
+	import {title} from '../stores';
+	
+	$title = 'FAQ'
 </script>
 
 <PageHeader

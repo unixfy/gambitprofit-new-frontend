@@ -47,3 +47,5 @@ const darkmodecalculator = function () {
 }
 
 export const darkmode = darkmodecalculator();
+
+export const title = writable('');

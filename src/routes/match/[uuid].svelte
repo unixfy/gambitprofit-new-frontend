@@ -3,6 +3,7 @@
 	import { page } from '$app/stores';
 	import dayjs from "dayjs/esm";
 	import relativeTime from "dayjs/esm/plugin/relativeTime";
+	import {title} from '../../stores';
 
 	export let match;
 
@@ -14,7 +15,9 @@
 		// this replaces the "tokens" query parameter in the URL
 		let searchParams = new URLSearchParams({'tokens': token_amount})
 		window.location.search = searchParams.toString()
-	}
+	}	
+
+	$title = match.name
 </script>
 
 <PageHeader title="Match: {match.name}" subtitle={dayjs(match.datetime).format('ddd, MMM D, YYYY h:mm A')} />
