@@ -1,26 +1,29 @@
 <script>
 	import PageHeader from '@components/PageHeader.svelte';
 	import { page } from '$app/stores';
-	import dayjs from "dayjs/esm";
-	import relativeTime from "dayjs/esm/plugin/relativeTime";
-	import {title} from '../../stores';
+	import dayjs from 'dayjs/esm';
+	import relativeTime from 'dayjs/esm/plugin/relativeTime';
+	import { title } from '../../stores';
 
 	export let match;
 
-	dayjs.extend(relativeTime)
+	dayjs.extend(relativeTime);
 
 	let token_amount = $page.url.searchParams.get('tokens');
 
 	export function setTokens() {
 		// this replaces the "tokens" query parameter in the URL
-		let searchParams = new URLSearchParams({'tokens': token_amount})
-		window.location.search = searchParams.toString()
-	}	
+		let searchParams = new URLSearchParams({ tokens: token_amount });
+		window.location.search = searchParams.toString();
+	}
 
-	$title = match.name
+	$title = match.name;
 </script>
 
-<PageHeader title="Match: {match.name}" subtitle={dayjs(match.datetime).format('ddd, MMM D, YYYY h:mm A')} />
+<PageHeader
+	title="Match: {match.name}"
+	subtitle={dayjs(match.datetime).format('ddd, MMM D, YYYY h:mm A')}
+/>
 
 <div class="content-wrapper">
 	<div class="flex flex-col space-y-4">
@@ -44,9 +47,7 @@
 					class="input input-bordered w-full"
 					bind:value={token_amount}
 				/>
-				<div class="btn" on:click="{setTokens}">
-					Apply
-				</div>
+				<div class="btn" on:click={setTokens}>Apply</div>
 			</label>
 		</div>
 
@@ -95,8 +96,9 @@
 				<div class="stat-figure text-secondary">
 					<i class="fa-solid fa-clock fa-2x" />
 				</div>
-				<div class="stat-title">Cutoff At</div>
+				<div class="stat-title">Cutoff</div>
 				<div class="stat-value text-3xl lg:text-4xl">{dayjs(match.cutoff_datetime).fromNow()}</div>
+				<div class="stat-desc">{dayjs(match.cutoff_datetime).format('MMM D, YYYY h:mm A')}</div>
 			</div>
 
 			<div class="stat">
