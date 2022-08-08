@@ -111,9 +111,9 @@
 				<p class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{bettype.name}</p>
 
 				<!-- show lines -->
-				<div class="grid sm:grid-flow-col-dense auto-cols-fr gap-4">
+				<div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
 					{#each bettype.lines as { name, odds, reward }}
-						<div class="card border">
+						<div class="card border col-auto">
 							<div class="card-body p-4">
 								<p class="card-title">{name}</p>
 								<div>
