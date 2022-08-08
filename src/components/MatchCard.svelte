@@ -1,15 +1,21 @@
 <script>
-	import dayjs from "dayjs/esm";
-	import relativeTime from "dayjs/esm/plugin/relativeTime";
+	import dayjs from 'dayjs/esm';
+	import relativeTime from 'dayjs/esm/plugin/relativeTime';
+	import { onMount } from 'svelte';
+	import { not_equal } from 'svelte/internal';
 	export let match;
 
-	dayjs.extend(relativeTime)
+	dayjs.extend(relativeTime);
 
 	let active_bettype_index = 0;
 
 	function setActiveBettypeIndex(i) {
 		active_bettype_index = i;
 	}
+
+	onMount(async () => {
+		console.log(match);
+	});
 </script>
 
 <div class="card bg-base-100 shadow-lg border">
@@ -71,9 +77,13 @@
 				<p class="text-sm opacity-60 font-light">
 					<i class="fa-solid fa-info-circle" /> no-risk bets
 				</p>
-				{#each match.bettypes[active_bettype_index].no_risk.bet as {team, amount}}
-				<p><b>{team}:</b> Bet <span class="badge">{amount}</span> tokens</p>
-				{/each}
+				{#if match.bettypes[active_bettype_index].no_risk.possible}
+					{#each match.bettypes[active_bettype_index].no_risk.bet as { team, amount }}
+						<p><b>{team}:</b> Bet <span class="badge">{amount}</span> tokens</p>
+					{/each}
+				{:else}
+					sorry, not possible
+				{/if}
 			</div>
 
 			<div>
