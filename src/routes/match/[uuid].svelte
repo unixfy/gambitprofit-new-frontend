@@ -118,7 +118,9 @@
 				<!-- show lines -->
 				<div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
 					{#each bettype.lines as { name, odds, reward }}
-						<div class="card border col-auto">
+					<!-- dynamically adjust the size of the cards depending on how many lines there are... -->
+					<!-- note that we don't want the cards to be too big below md -->
+						<div class="card border" class:md:col-span-2={bettype.lines.length == 2} class:md:col-span-4={bettype.lines.length == 1}>
 							<div class="card-body p-4">
 								<p class="card-title">{name}</p>
 								<div>
