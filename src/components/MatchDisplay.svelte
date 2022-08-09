@@ -48,9 +48,9 @@
 	});
 </script>
 
-<div class="drawer drawer-mobile h-auto pb-8">
+<div class="drawer drawer-mobile h-auto">
 	<input id="settings-drawer" type="checkbox" class="drawer-toggle" />
-	<div class="drawer-content flex flex-col">
+	<div class="drawer-content flex flex-col pb-8">
 		<div class="px-2 lg:px-4">
 			<div class="flex justify-between pt-2 pb-4">
 				<h1 class="font-bold text-2xl my-auto">Gambit Plays</h1>
