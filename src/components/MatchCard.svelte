@@ -16,19 +16,19 @@
 <div class="card bg-base-100 shadow-lg border">
 	<div class="card-body px-4 py-2">
 		<div class="flex">
-			<p class="card-title my-auto text-ellipsis">{match.name}</p>
+			<p class="card-title my-auto truncate">{match.name}</p>
 			<div class="tooltip tooltip-left" data-tip="Open on GambitRewards">
 				<a
 					href={match.url}
 					rel="noreferer"
 					target="_blank"
 					class="ml-auto btn btn-circle  btn-ghost"
-					><i class="fa-solid fa-arrow-up-right-from-square" />
+					><i class="fa-solid fa-arrow-up-right-from-square fa-2x" />
 				</a>
 			</div>
 			<div class="tooltip tooltip-left" data-tip="More info about this match">
 				<a href="/match/{match.id}?tokens={tokens}" class="ml-2 btn btn-circle btn-ghost">
-					<i class="fa-solid fa-file-lines" />
+					<i class="fa-solid fa-circle-arrow-right fa-2x" />
 				</a>
 			</div>
 		</div>
@@ -85,7 +85,9 @@
 				<div>
 					<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-clock" /> cutoff</p>
 					<p>{dayjs(match.cutoff_datetime).fromNow()}</p>
-					<p class="text-sm opacity-60">{dayjs(match.cutoff_datetime).format("MMM D, YYYY h:mm A")}</p>
+					<p class="text-sm opacity-60">
+						{dayjs(match.cutoff_datetime).format('MMM D, YYYY h:mm A')}
+					</p>
 				</div>
 
 				<div>
