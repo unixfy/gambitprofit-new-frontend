@@ -33,62 +33,65 @@
 			</div>
 		</div>
 
-		<div class="flex flex-col space-y-2">
-			<div class="tabs tabs-boxed bg-base-100 p-0 mb-2">
+		<div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-4">
+			<div class="tabs w-fit tabs-boxed flex-row md:flex-col bg-base-100 p-0 md:pr-4">
 				{#each match.bettypes as bettype, i}
 					<!-- a really janky way to implement tabs for bet types -->
 					<a
-						class="tab"
+						class="tab md:w-max mx-auto"
 						class:tab-active={active_bettype_index == i}
 						on:click={() => setActiveBettypeIndex(i)}>{bettype.name}</a
 					>
 				{/each}
 			</div>
 
-			<div class="stats stats-horizontal p-1">
-				<div class="stat p-0 place-items-center">
-					<div class="stat-title text-sm">No-Risk Profit</div>
-					<div class="stat-value text-lg">
-						{match.bettypes[active_bettype_index].no_risk.profit_sb_percentage}%
+			<div class="flex flex-col md:flex-row w-full md:place-items-start md:space-x-8 space-y-2">
+				<div class="stats stats-horizontal md:stats-vertical p-1 md:pt-0">
+					<div class="stat py-0 md:px-0 md:pb-2 place-items-center">
+						<div class="stat-title text-sm">No-Risk Profit</div>
+						<div class="stat-value text-lg">
+							{match.bettypes[active_bettype_index].no_risk.profit_sb_percentage}%
+						</div>
+					</div>
+					<div class="stat py-0 md:px-0 md:pt-2 place-items-center">
+						<div class="stat-title text-sm">Bet Types</div>
+						<div class="stat-value text-lg">
+							{#if match.bettypes[active_bettype_index].no_risk.possible}
+								<span class="badge badge-outline badge-success">No Risk</span>
+							{/if}
+							{#if match.bettypes[active_bettype_index].med_risk.possible}
+								<span class="badge badge-outline badge-warning">Med Risk</span>
+							{/if}
+							{#if match.bettypes[active_bettype_index].high_risk.possible}
+								<span class="badge badge-outline badge-error">High Risk</span>
+							{/if}
+						</div>
 					</div>
 				</div>
-				<div class="stat p-0 place-items-center">
-					<div class="stat-title text-sm">Bet Types</div>
-					<div class="stat-value text-lg">
-						{#if match.bettypes[active_bettype_index].no_risk.possible}
-							<span class="badge badge-outline badge-success">No Risk</span>
-						{/if}
-						{#if match.bettypes[active_bettype_index].med_risk.possible}
-							<span class="badge badge-outline badge-warning">Med Risk</span>
-						{/if}
-						{#if match.bettypes[active_bettype_index].high_risk.possible}
-							<span class="badge badge-outline badge-error">High Risk</span>
-						{/if}
-					</div>
+
+				<div>
+					<p class="text-sm opacity-60 font-light">
+						<i class="fa-solid fa-info-circle" /> no-risk bets
+					</p>
+					{#if match.bettypes[active_bettype_index].no_risk.possible}
+						{#each match.bettypes[active_bettype_index].no_risk.bet as { team, amount }}
+							<p><b>{team}:</b> Bet <span class="badge">{amount}</span> tokens</p>
+						{/each}
+					{:else}
+						sorry, not possible
+					{/if}
 				</div>
-			</div>
 
-			<div>
-				<p class="text-sm opacity-60 font-light">
-					<i class="fa-solid fa-info-circle" /> no-risk bets
-				</p>
-				{#if match.bettypes[active_bettype_index].no_risk.possible}
-					{#each match.bettypes[active_bettype_index].no_risk.bet as { team, amount }}
-						<p><b>{team}:</b> Bet <span class="badge">{amount}</span> tokens</p>
-					{/each}
-				{:else}
-					sorry, not possible
-				{/if}
-			</div>
+				<div>
+					<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-clock" /> cutoff</p>
+					<p>{dayjs(match.cutoff_datetime).fromNow()}</p>
+					<p class="text-sm opacity-60">{dayjs(match.cutoff_datetime).format("MMM D, YYYY h:mm A")}</p>
+				</div>
 
-			<div>
-				<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-clock" /> cutoff</p>
-				<p>{dayjs(match.cutoff_datetime).fromNow()}</p>
-			</div>
-
-			<div>
-				<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-shuffle" /> sport</p>
-				<p>{match.sport}</p>
+				<div>
+					<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-shuffle" /> sport</p>
+					<p>{match.sport}</p>
+				</div>
 			</div>
 		</div>
 		<div class="card-actions justify-end">
