@@ -77,7 +77,7 @@
 					<progress class="progress col-span-3 progress-primary" />
 				{:else}
 					{#each data.results as item}
-						<MatchCard match={item} tokens={tokens} />
+						<MatchCard match={item} {tokens} />
 					{:else}
 						<div class="alert alert-warning col-span-4">
 							<div>
@@ -125,14 +125,14 @@
 							bind:value={tokens}
 						/>
 						<div class="btn-group w-full">
-							<input
+							<!-- <input
 								type="radio"
 								name="tokens"
 								value={1000}
 								data-title="1k"
 								class="btn"
 								bind:group={tokens}
-							/>
+							/> -->
 							<input
 								type="radio"
 								name="tokens"
@@ -154,6 +154,14 @@
 								name="tokens"
 								value={10000}
 								data-title="10k"
+								class="btn"
+								bind:group={tokens}
+							/>
+							<input
+								type="radio"
+								name="tokens"
+								value={20000}
+								data-title="20k"
 								class="btn"
 								bind:group={tokens}
 							/>
