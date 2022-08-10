@@ -42,6 +42,7 @@
 						<li><a href="/donate">Donate</a></li>
 						<li><a href="/notifications">Notifications</a></li>
 						<li><a href="/help">Help</a></li>
+						<li><a href="https://unixfy.atlassian.net/rest/collectors/1.0/template/form/5086e8b7" rel="noopener" target="_blank">Feedback</a></li>
 					</ul>
 				</div>
 				<a class="btn btn-ghost normal-case text-xl" href="/">GambitProfit</a>
@@ -56,6 +57,7 @@
 						<li><a href="/donate">Donate</a></li>
 						<li><a href="/notifications">Notifications</a></li>
 						<li><a href="/help">Help</a></li>
+						<li><a href="https://unixfy.atlassian.net/rest/collectors/1.0/template/form/5086e8b7" rel="noopener" target="_blank">Feedback</a></li>
 					</ul>
 				</div>
 				<div class="tooltip tooltip-left" data-tip="Join our Discord server">
