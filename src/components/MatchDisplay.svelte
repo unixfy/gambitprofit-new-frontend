@@ -9,7 +9,7 @@
 	let sports = [];
 
 	// our filters
-	let tokens = 1000;
+	let tokens = 10000;
 	let search = '';
 	let sort = '-max_no_risk_profit_sb_percentage';
 	// whether to show non no-risk recommended - inverted
