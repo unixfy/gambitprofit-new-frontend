@@ -1,3 +1,11 @@
+<script context="module">
+    export async function load() {
+        return {
+            status: 302,
+            redirect: 'https://unixfy.net/donate'
+        }
+    }
+</script>
 <script>
 	import PageHeader from '@components/PageHeader.svelte';
     import {title} from '../stores';
@@ -11,7 +19,5 @@
 />
 
 <div class="content-wrapper">
-    <p>
-        Coming soon 🙂
-    </p>
+
 </div>
