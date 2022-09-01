@@ -19,10 +19,7 @@
 	<div class="alert alert-info text-white">
 		<div>
 			<p>
-				<b>Welcome to the new version of GambitProfit.</b> With a new API server and fresh interface
-				written from scratch, you'll have a streamlined and more reliable experience - not to mention,
-				one that's much easier for the developer to maintain 😊. Note that some features, like notifications,
-				remain under development. Stay tuned to see them roll out.
+				<b>The <a href="/donate" target="_blank">Donate page</a> is now live!</b> The next features will be persistent settings and notifications...
 			</p>
 		</div>
 	</div>
