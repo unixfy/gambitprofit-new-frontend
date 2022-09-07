@@ -20,7 +20,7 @@
 			<div class="tooltip tooltip-left" data-tip="Open on GambitRewards">
 				<a
 					href={match.url}
-					rel="noreferer"
+					rel="noreferrer"
 					target="_blank"
 					class="ml-auto btn btn-circle  btn-ghost"
 					><i class="fa-solid fa-arrow-up-right-from-square fa-2x" />
