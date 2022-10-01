@@ -18,10 +18,9 @@
 <div class="ct max-w-screen-xl px-2 py-6 sm:py-8 flex flex-col space-y-6 sm:space-y-8">
 	<div class="alert alert-info text-white">
 		<div>
-			<p>
+			<p>				
 				<b>On 10/01/2022 at 12:15am Pacific, the 10% discount changed to 5%.</b> All new plays will reflect this discount, and all plays whose cutoffs had not passed on 10/01/2022 at 11:20am Pacific were retroactively updated to reflect the new discount.
-			</p>
-			<p>
+				<br>
 				<b>The <a href="/donate" target="_blank">Donate page</a> is now live!</b> The next features will be persistent settings and notifications...
 			</p>
 		</div>
