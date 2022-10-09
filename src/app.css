@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+.stat-value {
+    @apply font-semibold
+}
+
 .ct {
     @apply max-w-screen-xl mx-auto container
 }

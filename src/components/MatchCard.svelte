@@ -75,7 +75,7 @@
 					</p>
 					{#if match.bettypes[active_bettype_index].no_risk.possible}
 						{#each match.bettypes[active_bettype_index].no_risk.bet as { team, amount }}
-							<p><b>{team}:</b> Bet <span class="badge">{amount}</span> tokens</p>
+							<p><span class="font-semibold">{team}:</span> Bet <span class="badge">{amount}</span> tokens</p>
 						{/each}
 					{:else}
 						sorry, not possible

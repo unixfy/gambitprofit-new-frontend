@@ -189,7 +189,7 @@
 										<div>
 											<p class="opacity-90">{team}</p>
 											<p class="text-2xl font-bold">
-												Bet <span class="font-extrabold">{amount}</span> tokens
+												Bet <span class="font-bold">{amount}</span> tokens
 											</p>
 										</div>
 										<!-- don't display this one if it's the last bet (i.e. check if index is equal to length -1) -->

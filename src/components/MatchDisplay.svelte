@@ -174,7 +174,7 @@
 					<h2 class="card-title">Sort by</h2>
 					<div class="card-actions justify-end">
 						<div class="form-control w-full max-w-xs">
-							<select class="select select-bordered" bind:value={sort} aria-label="Sort by">
+							<select class="select select-bordered font-normal" bind:value={sort} aria-label="Sort by">
 								<option value="-max_no_risk_profit_sb_percentage">No Risk Profit - Desc</option>
 								<option value="max_no_risk_profit_sb_percentage">No Risk Profit - Asc</option>
 								<option value="-cutoff_datetime">Cutoff Time - Desc</option>
@@ -211,7 +211,7 @@
 							<label class="label">
 								<span class="label-text ">Filter by sport</span>
 							</label>
-							<select class="select select-bordered" bind:value={sport}>
+							<select class="select select-bordered font-normal" bind:value={sport}>
 								<option disabled selected>Pick one</option>
 								{#each sports as sport}
 									<option>{sport}</option>
