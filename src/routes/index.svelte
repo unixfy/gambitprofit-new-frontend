@@ -15,7 +15,14 @@
 	</div>
 </div>
 
-<div class="ct max-w-screen-xl px-2 py-6 sm:py-8 flex flex-col space-y-6 sm:space-y-8">
+<div class="ct max-w-screen-xl px-2 py-6 sm:py-8 flex flex-col space-y-2 sm:space-y-4">
+	<a href="/donate">
+		<div class="alert alert-success text-white">
+			<div class="flex-col">
+				<p><b>Help keep GambitProfit running and support development.</b> Click me to donate.</p>
+			</div>
+		</div>
+	</a>
 	<div class="alert alert-info text-white">
 		<div class="flex-col">
 			<p>
