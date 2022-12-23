@@ -2,35 +2,24 @@
 	import MatchCard from './MatchCard.svelte';
 	import { fireRequest } from '$lib/fireRequest';
 	import { onMount } from 'svelte';
-	import { userTokens } from "../stores.js";
+	import { user_tokens, user_search, user_sort, user_show_not_no_risk_recommended, user_sport, user_show_cutoff_passed, user_datetime } from "../stores.js";
 
 	// utilities
 	let loading = true;
 	let data = {};
 	let sports = [];
 
-	// our filters
-	let tokens = $userTokens;
-	let search = '';
-	let sort = '-max_no_risk_profit_sb_percentage';
-	// whether to show non no-risk recommended - inverted
-	let show_not_no_risk_recommended = false;
-	let sport = '';
-	// whether to show plays that passed the cutoff
-	let show_cutoff_passed = false;
-	let datetime = '';
-
 	async function fetchData() {
 		loading = true;
 
 		let req = await fireRequest('/matches/', {
-			tokens: tokens,
-			search: search,
-			sort: sort,
-			sport: sport,
-			datetime: datetime,
-			no_risk_recommended: !show_not_no_risk_recommended,
-			cutoff_passed: show_cutoff_passed
+			tokens: $user_tokens,
+			search: $user_search,
+			sort: $user_sort,
+			sport: $user_sport,
+			datetime: $user_datetime,
+			no_risk_recommended: !$user_show_not_no_risk_recommended,
+			cutoff_passed: $user_show_cutoff_passed
 		});
 
 		let req_data = await req.json();
@@ -77,7 +66,7 @@
 					<progress class="progress col-span-3 progress-primary" />
 				{:else}
 					{#each data.results as item}
-						<MatchCard match={item} {tokens} />
+						<MatchCard match={item} tokens={$user_tokens} />
 					{:else}
 						<div class="alert alert-warning col-span-4">
 							<div>
@@ -122,7 +111,7 @@
 							placeholder="1000"
 							class="input input-bordered w-full"
 							min="50"
-							bind:value={tokens}
+							bind:value={$user_tokens}
 						/>
 						<div class="btn-group w-full">
 							<!-- <input
@@ -139,7 +128,7 @@
 								value={2500}
 								data-title="2.5k"
 								class="btn"
-								bind:group={tokens}
+								bind:group={$user_tokens}
 							/>
 							<input
 								type="radio"
@@ -147,7 +136,7 @@
 								value={5000}
 								data-title="5k"
 								class="btn"
-								bind:group={tokens}
+								bind:group={$user_tokens}
 							/>
 							<input
 								type="radio"
@@ -155,7 +144,7 @@
 								value={10000}
 								data-title="10k"
 								class="btn"
-								bind:group={tokens}
+								bind:group={$user_tokens}
 							/>
 							<input
 								type="radio"
@@ -163,7 +152,7 @@
 								value={20000}
 								data-title="20k"
 								class="btn"
-								bind:group={tokens}
+								bind:group={$user_tokens}
 							/>
 						</div>
 					</div>
@@ -174,7 +163,7 @@
 					<h2 class="card-title">Sort by</h2>
 					<div class="card-actions justify-end">
 						<div class="form-control w-full max-w-xs">
-							<select class="select select-bordered font-normal" bind:value={sort} aria-label="Sort by">
+							<select class="select select-bordered font-normal" bind:value={$user_sort} aria-label="Sort by">
 								<option value="-max_no_risk_profit_sb_percentage">No Risk Profit - Desc</option>
 								<option value="max_no_risk_profit_sb_percentage">No Risk Profit - Asc</option>
 								<option value="-cutoff_datetime">Cutoff Time - Desc</option>
@@ -193,7 +182,7 @@
 						<div class="form-control w-full">
 							<label class="label cursor-pointer">
 								<span class="label-text ">Show unprofitable?</span>
-								<input type="checkbox" class="toggle" bind:checked={show_not_no_risk_recommended} />
+								<input type="checkbox" class="toggle" bind:checked={$user_show_not_no_risk_recommended} />
 							</label>
 						</div>
 						<div class="form-control w-full max-w-xs">
@@ -204,14 +193,14 @@
 								type="text"
 								placeholder="Search"
 								class="input input-bordered w-full max-w-xs "
-								bind:value={search}
+								bind:value={$user_search}
 							/>
 						</div>
 						<div class="form-control w-full max-w-xs">
 							<label class="label">
 								<span class="label-text ">Filter by sport</span>
 							</label>
-							<select class="select select-bordered font-normal" bind:value={sport}>
+							<select class="select select-bordered font-normal" bind:value={$user_sport}>
 								<option disabled selected>Pick one</option>
 								{#each sports as sport}
 									<option>{sport}</option>
@@ -230,7 +219,7 @@
 						<div class="form-control w-full">
 							<label class="label cursor-pointer">
 								<span class="label-text ">Show historical plays?</span>
-								<input type="checkbox" class="toggle" bind:checked={show_cutoff_passed} />
+								<input type="checkbox" class="toggle" bind:checked={$user_show_cutoff_passed} />
 							</label>
 						</div>
 
