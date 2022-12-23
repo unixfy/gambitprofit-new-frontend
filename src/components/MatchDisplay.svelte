@@ -201,7 +201,7 @@
 								<span class="label-text ">Filter by sport</span>
 							</label>
 							<select class="select select-bordered font-normal" bind:value={$user_sport}>
-								<option disabled selected>Pick one</option>
+								<option selected value=''>None</option>
 								{#each sports as sport}
 									<option>{sport}</option>
 								{/each}
