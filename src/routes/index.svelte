@@ -26,8 +26,7 @@
 	<div class="alert alert-info text-white">
 		<div class="flex-col">
 			<p>
-				<b>On 11/01/2022, the 5% discount changed to 10%.</b> All new plays will reflect this discount,
-				and all plays added to this site after 10/31/2022 at 9:00pm Pacific reflect the new discount.
+				
 			</p>
 		</div>
 	</div>
