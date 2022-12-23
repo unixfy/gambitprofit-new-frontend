@@ -2,6 +2,7 @@
 	import MatchCard from './MatchCard.svelte';
 	import { fireRequest } from '$lib/fireRequest';
 	import { onMount } from 'svelte';
+	import { userTokens } from "../stores.js";
 
 	// utilities
 	let loading = true;
@@ -9,7 +10,7 @@
 	let sports = [];
 
 	// our filters
-	let tokens = 10000;
+	let tokens = $userTokens;
 	let search = '';
 	let sort = '-max_no_risk_profit_sb_percentage';
 	// whether to show non no-risk recommended - inverted
@@ -40,7 +41,6 @@
 		data = req_data;
 		sports = sports_req_data;
 		loading = false;
-		console.log(data);
 	}
 
 	onMount(async () => {
