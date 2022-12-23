@@ -1,5 +1,6 @@
 import { writable } from "svelte/store";
 import { browser } from "$app/env";
+import { writable as persistentWritable } from "svelte-local-storage-store";
 
 const darkmodecalculator = function () {
     const store = writable(false)
@@ -49,3 +50,11 @@ const darkmodecalculator = function () {
 export const darkmode = darkmodecalculator();
 
 export const title = writable('');
+
+// store our user-defined settings
+export const userTokens = writable(10000);
+export const userSearch = writable('');
+export const userShowNotNoRiskRecommended = writable(false);
+export const userSport = writable('');
+export const userShowCutoffPassed = writable(false);
+export const userDatetime = writable(false);
