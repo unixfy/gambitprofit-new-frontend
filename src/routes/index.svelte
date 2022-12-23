@@ -26,7 +26,7 @@
 	<div class="alert alert-info text-white">
 		<div class="flex-col">
 			<p>
-				
+				<b>New!</b> Your settings (token amount, sort, search, etc.) will now persist in your browser.
 			</p>
 		</div>
 	</div>
