@@ -27,6 +27,7 @@
 			reason why this action may be taken.
 		</li>
 		<li>You won't get credentials for the API on request.</li>
+		<li>Plays (matches) whose play times are older than 7 days ago aren't updated anymore, even if they're not marked as "completed" on Gambit's site.</li>
 	</ul>
 	<h2>Usage</h2>
 	<p>
