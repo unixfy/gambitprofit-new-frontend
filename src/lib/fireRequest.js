@@ -1,8 +1,7 @@
 export async function fireRequest(path, queryparams, method, body) {
+    const requestUrl = import.meta.env.VITE_API_ENDPOINT + path + '?' + new URLSearchParams(queryparams)
     return fetch(
-        import.meta.env.VITE_API_ENDPOINT +
-        path + '?' + 
-        new URLSearchParams(queryparams),
+        requestUrl,
 
         {
             method: (method ? method : "GET"),
