@@ -13,7 +13,7 @@
 		"@fontsource/inter": "^4.5.14",
 		"@fortawesome/fontawesome-free": "^6.2.1",
 		"@sveltejs/adapter-auto": "next",
-		"@sveltejs/kit": "1.0.0-next.405",
+		"@sveltejs/kit": "1.0.0-next.406",
 		"autoprefixer": "^10.4.13",
 		"daisyui": "^2.41.0",
 		"dayjs": "^1.11.6",
