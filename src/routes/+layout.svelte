@@ -10,7 +10,7 @@
 	import { onMount } from 'svelte';
 	import Navbar from '$lib/Navbar.svelte';
 	import Footer from '$lib/Footer.svelte';
-	import { browser } from '$app/env';
+	import { browser } from '$app/environment';
 	import {page} from "$app/stores";
 
 	onMount(async () => {
