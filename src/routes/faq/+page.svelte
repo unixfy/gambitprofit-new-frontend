@@ -1,10 +1,6 @@
 <script>
-	import PageHeader from '../components/PageHeader.svelte';
-	export let faqs;
-
-	import {title} from '../stores';
-	
-	$title = 'FAQ'
+	import PageHeader from '$lib/PageHeader.svelte';
+	export let data;
 </script>
 
 <PageHeader
@@ -13,11 +9,11 @@
 />
 
 <div class="flex flex-col space-y-4 max-w-screen-sm mx-auto py-8 px-4">
-	{#each faqs as faq}
+	{#each data.faqs as faq}
 		<div
-			class="collapse collapse-plus border bg-base-100 rounded-box"
+			class="collapse collapse-plus border border-base-300 bg-base-100 rounded-box"
 		>
-			<input type="checkbox" />
+			<input type="radio" name="faq-accordion"/>
 			<div class="collapse-title text-xl font-medium">{faq.q}</div>
 			<div class="collapse-content">
 				<p>{@html faq.a}</p>

@@ -1,8 +1,5 @@
 <script>
-	import PageHeader from '@components/PageHeader.svelte';
-    import {title} from '../stores';
-	
-	$title = 'Notifications'
+	import PageHeader from '$lib/PageHeader.svelte';
 </script>
 
 <PageHeader

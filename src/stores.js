@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
-import { browser } from "$app/env";
-import { writable as persistentWritable } from "svelte-local-storage-store";
+import { browser } from "$app/environment";
+import { persisted as persistentWritable } from "svelte-local-storage-store";
 
 // not really easy to migrate this to svelte-local-storage-store as we need to preserve asking the browser about its preferences
 const darkmodecalculator = function () {
@@ -49,8 +49,6 @@ const darkmodecalculator = function () {
 }
 
 export const darkmode = darkmodecalculator();
-
-export const title = writable('');
 
 // store our user-defined settings
 // i would make this an object but we can't actually bind to object values lol

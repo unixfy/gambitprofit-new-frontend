@@ -6,11 +6,12 @@
 	import '@fontsource/inter/800.css';
 
 	import '../app.css';
-	import { darkmode, title } from '../stores';
+	import { darkmode } from '../stores';
 	import { onMount } from 'svelte';
-	import Navbar from '@components/Navbar.svelte';
-	import Footer from '@components/Footer.svelte';
-	import { browser } from '$app/env';
+	import Navbar from '$lib/Navbar.svelte';
+	import Footer from '$lib/Footer.svelte';
+	import { browser } from '$app/environment';
+	import {page} from "$app/stores";
 
 	onMount(async () => {
 		if (browser) {
@@ -26,8 +27,8 @@
 
 <svelte:head>
 	<!-- Primary Meta Tags -->
-	<title>{$title} | GambitProfit</title>
-	<meta name="title" content="{$title} | GambitProfit" />
+	<title>{(($page.error) ? "Error" : $page.data.title || "Welcome")} | GambitProfit</title>
+	<meta name="title" content="{(($page.error) ? 'Error' : $page.data.title || 'Welcome')} | GambitProfit" />
 	<meta
 		name="description"
 		content="The data portal for Gambit Rewards plays. Easily browse, sort, search through, and share plays!"

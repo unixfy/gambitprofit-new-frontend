@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div class="card bg-base-100 shadow-lg border">
+<div class="card bg-base-100 shadow-lg border border-base-300">
 	<div class="card-body px-4 py-2">
 		<div class="flex">
 			<p class="card-title my-auto truncate">{match.name}</p>
@@ -23,12 +23,12 @@
 					rel="noreferrer"
 					target="_blank"
 					class="ml-auto btn btn-circle  btn-ghost"
-					><i class="fa-solid fa-arrow-up-right-from-square fa-2x" />
+					><i class="fa-solid fa-arrow-up-right-from-square fa-2x"></i>
 				</a>
 			</div>
 			<div class="tooltip tooltip-left" data-tip="More info about this match">
 				<a href="/match/{match.id}?tokens={tokens}" class="ml-2 btn btn-circle btn-ghost">
-					<i class="fa-solid fa-circle-arrow-right fa-2x" />
+					<i class="fa-solid fa-circle-arrow-right fa-2x"></i>
 				</a>
 			</div>
 		</div>
@@ -39,7 +39,7 @@
 					<!-- a really janky way to implement tabs for bet types -->
 					<a
 						class="tab md:w-max mx-auto"
-						class:tab-active={active_bettype_index == i}
+						class:tab-active={active_bettype_index === i}
 						on:click={() => setActiveBettypeIndex(i)}>{bettype.name}</a
 					>
 				{/each}
@@ -71,11 +71,11 @@
 
 				<div>
 					<p class="text-sm opacity-60 font-light">
-						<i class="fa-solid fa-info-circle" /> no-risk bets
+						<i class="fa-solid fa-info-circle"></i> no-risk bets
 					</p>
 					{#if match.bettypes[active_bettype_index].no_risk.possible}
 						{#each match.bettypes[active_bettype_index].no_risk.bet as { team, amount }}
-							<p><span class="font-semibold">{team}:</span> Bet <span class="badge">{amount}</span> tokens</p>
+							<p><span class="font-semibold">{team}:</span> Bet <span class="badge badge-neutral">{amount}</span> tokens</p>
 						{/each}
 					{:else}
 						sorry, not possible
@@ -83,7 +83,7 @@
 				</div>
 
 				<div>
-					<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-clock" /> cutoff</p>
+					<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-clock"></i> cutoff</p>
 					<p>{dayjs(match.cutoff_datetime).fromNow()}</p>
 					<p class="text-sm opacity-60">
 						{dayjs(match.cutoff_datetime).format('MMM D, YYYY h:mm A')}
@@ -91,7 +91,7 @@
 				</div>
 
 				<div>
-					<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-shuffle" /> sport</p>
+					<p class="text-sm opacity-60 font-light"><i class="fa-solid fa-shuffle"></i> sport</p>
 					<p>{match.sport}</p>
 				</div>
 			</div>
