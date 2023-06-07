@@ -1,10 +1,6 @@
 <script>
 	import PageHeader from '$lib/PageHeader.svelte';
 	export let data;
-
-	import {title} from '../../stores';
-	
-	$title = 'FAQ'
 </script>
 
 <PageHeader

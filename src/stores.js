@@ -50,8 +50,6 @@ const darkmodecalculator = function () {
 
 export const darkmode = darkmodecalculator();
 
-export const title = writable('');
-
 // store our user-defined settings
 // i would make this an object but we can't actually bind to object values lol
 export const user_tokens = persistentWritable('user_tokens', 10000)

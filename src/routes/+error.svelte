@@ -1,8 +1,5 @@
 <script>
 	import { page } from '$app/stores';
-	import {title} from '../stores';
-	
-	$title = 'Error'
 </script>
 
 <div class="min-h-screen flex text-center">

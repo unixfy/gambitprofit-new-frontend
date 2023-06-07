@@ -1,5 +1,6 @@
 export async function load() {
     return {
+        title: "FAQ",
         faqs: [
             {
                 "q": "How much does this site cost?",

@@ -1,8 +1,5 @@
 <script>
 	import MatchDisplay from '$lib/MatchDisplay.svelte';
-	import { title } from '../stores';
-
-	$title = 'Home';
 </script>
 
 <div class="hero homepage-bg">

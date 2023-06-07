@@ -1,8 +1,5 @@
 <script>
 	import PageHeader from '$lib/PageHeader.svelte';
-	import {title} from '../../stores';
-	
-	$title = 'Help'
 </script>
 
 <PageHeader title="Help" subtitle="Receive assistance with this site and its features" />

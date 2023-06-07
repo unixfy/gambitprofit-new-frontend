@@ -3,8 +3,6 @@
 	import { page } from '$app/stores';
 	import dayjs from 'dayjs/esm';
 	import relativeTime from 'dayjs/esm/plugin/relativeTime';
-	import { title } from '../../../stores';
-
 	export let data;
 
 	dayjs.extend(relativeTime);
@@ -16,8 +14,6 @@
 		let searchParams = new URLSearchParams({ tokens: token_amount });
 		window.location.search = searchParams.toString();
 	}
-
-	$title = data.match.name;
 </script>
 
 <PageHeader
