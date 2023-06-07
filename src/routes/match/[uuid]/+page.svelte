@@ -1,9 +1,11 @@
 <script>
+	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
 	import PageHeader from '@components/PageHeader.svelte';
 	import { page } from '$app/stores';
 	import dayjs from 'dayjs/esm';
 	import relativeTime from 'dayjs/esm/plugin/relativeTime';
-	import { title } from '../../stores';
+	import { title } from '../../../stores';
 
 	export let match;
 

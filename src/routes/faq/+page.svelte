@@ -1,8 +1,10 @@
 <script>
-	import PageHeader from '../components/PageHeader.svelte';
+	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
+
+	import PageHeader from '../../components/PageHeader.svelte';
 	export let faqs;
 
-	import {title} from '../stores';
+	import {title} from '../../stores';
 	
 	$title = 'FAQ'
 </script>
