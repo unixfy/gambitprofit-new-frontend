@@ -37,7 +37,7 @@
 	});
 </script>
 
-<div class="drawer drawer-mobile h-auto">
+<div class="drawer lg:drawer-open h-full">
 	<input id="settings-drawer" type="checkbox" class="drawer-toggle" />
 	<div class="drawer-content flex flex-col pb-8">
 		<div class="px-2 lg:px-4">
