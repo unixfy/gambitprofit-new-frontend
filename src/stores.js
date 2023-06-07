@@ -1,6 +1,6 @@
 import { writable } from "svelte/store";
 import { browser } from "$app/environment";
-import { writable as persistentWritable } from "svelte-local-storage-store";
+import { persisted as persistentWritable } from "svelte-local-storage-store";
 
 // not really easy to migrate this to svelte-local-storage-store as we need to preserve asking the browser about its preferences
 const darkmodecalculator = function () {
