@@ -64,7 +64,7 @@
     </a>
     <div class="alert alert-info text-white">
         <p>
-            <b>New!</b> Your settings (token amount, sort, search, etc.) will now persist in your browser.
+            <b>New!</b> We've made improvements to data availability, stability, security, and speed!
         </p>
     </div>
 </div>
