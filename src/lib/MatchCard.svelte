@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div class="card bg-base-100 shadow-lg border">
+<div class="card bg-base-100 shadow-lg border border-base-300">
 	<div class="card-body px-4 py-2">
 		<div class="flex">
 			<p class="card-title my-auto truncate">{match.name}</p>
@@ -75,7 +75,7 @@
 					</p>
 					{#if match.bettypes[active_bettype_index].no_risk.possible}
 						{#each match.bettypes[active_bettype_index].no_risk.bet as { team, amount }}
-							<p><span class="font-semibold">{team}:</span> Bet <span class="badge">{amount}</span> tokens</p>
+							<p><span class="font-semibold">{team}:</span> Bet <span class="badge badge-neutral">{amount}</span> tokens</p>
 						{/each}
 					{:else}
 						sorry, not possible
