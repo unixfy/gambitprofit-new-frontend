@@ -1,14 +1,8 @@
 <script>
     import {darkmode} from '../stores.js';
 
-    let mobilemenu = false;
-
     let toggleDarkMode = function () {
         $darkmode = !$darkmode;
-    };
-
-    let toggleMobileMenu = function () {
-        mobilemenu = !mobilemenu;
     };
 </script>
 
@@ -36,7 +30,7 @@
                     </label>
                     <ul
                             tabindex="0"
-                            class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                            class="menu dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 z-[100]"
                     >
                         <li><a href="/">Home</a></li>
                         <li><a href="/faq">FAQ</a></li>
@@ -51,9 +45,8 @@
                 <a class="btn btn-ghost normal-case text-xl" href="/">GambitProfit</a>
             </div>
             <div class="navbar-center hidden lg:flex"></div>
-            <div class="navbar-end space-x-4">
-                <div class="hidden lg:flex">
-                    <ul class="menu menu-horizontal p-0">
+            <div class="navbar-end w-full space-x-4">
+                    <ul class="menu menu-horizontal p-0 hidden lg:flex">
                         <li><a href="/">Home</a></li>
                         <li><a href="/faq">FAQ</a></li>
                         <li><a href="/api">API</a></li>
@@ -63,27 +56,27 @@
                         <li><a href="https://unixfy.atlassian.net/rest/collectors/1.0/template/form/5086e8b7"
                                rel="noopener" target="_blank">Feedback</a></li>
                     </ul>
-                </div>
-                <div class="tooltip tooltip-left" data-tip="Join our Discord server">
-                    <a
-                            class="btn btn-primary btn-square"
-                            aria-label="Join our Discord server"
-                            href="https://go.unixfy.net/hca"
-                            target="_blank"
-                            rel="noopener"
-                    >
-                        <i class="fa-brands fa-discord"></i>
-                    </a>
-                </div>
-                <div class="tooltip tooltip-left" data-tip="Toggle dark mode">
-                    <button class="btn btn-primary btn-square" aria-label="Toggle dark mode" on:click={toggleDarkMode}>
-                        {#if $darkmode}
-                            <i class="fa-solid fa-sun"></i>
-                        {:else}
-                            <i class="fa-solid fa-moon"></i>
-                        {/if}
-                    </button>
-                </div>
+                    <div class="tooltip tooltip-left" data-tip="Join our Discord server">
+                        <a
+                                class="btn btn-neutral btn-square btn-sm"
+                                aria-label="Join our Discord server"
+                                href="https://go.unixfy.net/hca"
+                                target="_blank"
+                                rel="noopener"
+                        >
+                            <i class="fa-brands fa-discord"></i>
+                        </a>
+                    </div>
+                    <div class="tooltip tooltip-left" data-tip="Toggle dark mode">
+                        <button class="btn btn-neutral btn-square btn-sm" aria-label="Toggle dark mode"
+                                on:click={toggleDarkMode}>
+                            {#if $darkmode}
+                                <i class="fa-solid fa-sun"></i>
+                            {:else}
+                                <i class="fa-solid fa-moon"></i>
+                            {/if}
+                        </button>
+                    </div>
             </div>
         </div>
     </div>
