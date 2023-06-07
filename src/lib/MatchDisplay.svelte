@@ -60,7 +60,6 @@
                     <button
                             class="btn btn-primary btn-square"
                             aria-label="Refresh data"
-                            class:loading
                             on:click={fetchData}
                     >
                         {#if !loading}
@@ -250,7 +249,7 @@
                 </div>
             </div>
 
-            <button class="btn btn-secondary btn-block" class:loading on:click={fetchData}
+            <button class="btn btn-secondary btn-block" on:click={fetchData}
             >Apply settings
             </button
             >
