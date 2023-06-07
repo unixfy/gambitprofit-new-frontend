@@ -1,5 +1,5 @@
 <script>
-	import { darkmode } from '../stores';
+	import { darkmode } from '../stores.js';
 
 	let mobilemenu = false;
 
@@ -36,7 +36,7 @@
 						tabindex="0"
 						class="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
 					>
-						<li><a href="/">Home</a></li>
+						<li><a href="/static">Home</a></li>
 						<li><a href="/faq">FAQ</a></li>
 						<li><a href="/api">API</a></li>
 						<li><a href="/donate">Donate</a></li>
@@ -45,13 +45,13 @@
 						<li><a href="https://unixfy.atlassian.net/rest/collectors/1.0/template/form/5086e8b7" rel="noopener" target="_blank">Feedback</a></li>
 					</ul>
 				</div>
-				<a class="btn btn-ghost normal-case text-xl" href="/">GambitProfit</a>
+				<a class="btn btn-ghost normal-case text-xl" href="/static">GambitProfit</a>
 			</div>
 			<div class="navbar-center hidden lg:flex" />
 			<div class="navbar-end space-x-4">
 				<div class="hidden lg:flex">
 					<ul class="menu menu-horizontal p-0">
-						<li><a href="/">Home</a></li>
+						<li><a href="/static">Home</a></li>
 						<li><a href="/faq">FAQ</a></li>
 						<li><a href="/api">API</a></li>
 						<li><a href="/donate">Donate</a></li>

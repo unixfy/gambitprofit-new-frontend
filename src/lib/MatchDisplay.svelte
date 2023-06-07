@@ -1,6 +1,6 @@
 <script>
 	import MatchCard from './MatchCard.svelte';
-	import { fireRequest } from '$lib/fireRequest';
+	import { fireRequest } from '$lib/fireRequest.js';
 	import { onMount } from 'svelte';
 	import { user_tokens, user_search, user_sort, user_show_not_no_risk_recommended, user_sport, user_show_cutoff_passed, user_datetime } from "../stores.js";
 

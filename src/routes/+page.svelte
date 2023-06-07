@@ -1,5 +1,5 @@
 <script>
-	import MatchDisplay from '@components/MatchDisplay.svelte';
+	import MatchDisplay from '$lib/MatchDisplay.svelte';
 	import { title } from '../stores';
 
 	$title = 'Home';

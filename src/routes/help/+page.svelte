@@ -1,5 +1,5 @@
 <script>
-	import PageHeader from '@components/PageHeader.svelte';
+	import PageHeader from '$lib/PageHeader.svelte';
 	import {title} from '../../stores';
 	
 	$title = 'Help'

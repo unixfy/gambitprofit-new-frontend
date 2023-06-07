@@ -8,8 +8,8 @@
 	import '../app.css';
 	import { darkmode, title } from '../stores';
 	import { onMount } from 'svelte';
-	import Navbar from '@components/Navbar.svelte';
-	import Footer from '@components/Footer.svelte';
+	import Navbar from '$lib/Navbar.svelte';
+	import Footer from '$lib/Footer.svelte';
 	import { browser } from '$app/env';
 
 	onMount(async () => {
