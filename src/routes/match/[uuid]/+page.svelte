@@ -1,13 +1,11 @@
 <script>
-	throw new Error("@migration task: Add data prop (https://github.com/sveltejs/kit/discussions/5774#discussioncomment-3292707)");
-
 	import PageHeader from '$lib/PageHeader.svelte';
 	import { page } from '$app/stores';
 	import dayjs from 'dayjs/esm';
 	import relativeTime from 'dayjs/esm/plugin/relativeTime';
 	import { title } from '../../../stores';
 
-	export let match;
+	export let data;
 
 	dayjs.extend(relativeTime);
 
@@ -19,12 +17,12 @@
 		window.location.search = searchParams.toString();
 	}
 
-	$title = match.name;
+	$title = data.match.name;
 </script>
 
 <PageHeader
-	title="Match: {match.name}"
-	subtitle={dayjs(match.datetime).format('ddd, MMM D, YYYY h:mm A')}
+	title="Match: {data.match.name}"
+	subtitle={dayjs(data.match.datetime).format('ddd, MMM D, YYYY h:mm A')}
 />
 
 <div class="content-wrapper">
@@ -32,7 +30,7 @@
 		<!-- nav buttons -->
 		<div class="flex justify-between">
 			<a class="btn" href="/"> <i class="fa-solid fa-home mr-2" /> Back Home </a>
-			<a class="btn" href={match.url} target="_blank" rel="noreferer">
+			<a class="btn" href={data.match.url} target="_blank" rel="noreferer">
 				<i class="fa-solid fa-arrow-up-right-from-square mr-2" />
 				Open on Gambit
 			</a>
@@ -56,7 +54,7 @@
 		<div class="divider" />
 
 		<!-- show alert if match is completed/cutoff passed -->
-		{#if match.completed || match.cutoff_passed}
+		{#if data.match.completed || data.match.cutoff_passed}
 			<div class="alert alert-warning">
 				<div>
 					<svg
@@ -72,11 +70,11 @@
 						/></svg
 					>
 					<span>
-						{#if match.cutoff_passed}
+						{#if data.match.cutoff_passed}
 							Oops! It's not possible to bet on this match anymore.
 						{/if}
 						<br />
-						{#if match.completed}
+						{#if data.match.completed}
 							This game has already been played.
 						{/if}
 					</span>
@@ -91,7 +89,7 @@
 					<i class="fa-solid fa-money-bill-1-wave fa-2x" />
 				</div>
 				<div class="stat-title">Max No-Risk Profit</div>
-				<div class="stat-value text-3xl lg:text-4xl">{match.max_no_risk_profit_sb_percentage}%</div>
+				<div class="stat-value text-3xl lg:text-4xl">{data.match.max_no_risk_profit_sb_percentage}%</div>
 			</div>
 
 			<div class="stat">
@@ -99,8 +97,8 @@
 					<i class="fa-solid fa-clock fa-2x" />
 				</div>
 				<div class="stat-title">Cutoff</div>
-				<div class="stat-value text-3xl lg:text-4xl">{dayjs(match.cutoff_datetime).fromNow()}</div>
-				<div class="stat-desc">{dayjs(match.cutoff_datetime).format('MMM D, YYYY h:mm A')}</div>
+				<div class="stat-value text-3xl lg:text-4xl">{dayjs(data.match.cutoff_datetime).fromNow()}</div>
+				<div class="stat-desc">{dayjs(data.match.cutoff_datetime).format('MMM D, YYYY h:mm A')}</div>
 			</div>
 
 			<div class="stat">
@@ -108,12 +106,12 @@
 					<i class="fa-solid fa-shuffle fa-2x" />
 				</div>
 				<div class="stat-title">Sport</div>
-				<div class="stat-value text-3xl lg:text-4xl">{match.sport}</div>
+				<div class="stat-value text-3xl lg:text-4xl">{data.match.sport}</div>
 			</div>
 		</div>
 
 		<!-- iterate over each bet type -->
-		{#each match.bettypes as bettype}
+		{#each data.match.bettypes as bettype}
 			<div class="p-6 rounded-xl bg-base-200">
 				<p class="text-2xl md:text-3xl lg:text-4xl font-bold mb-4">{bettype.name}</p>
 
@@ -122,7 +120,7 @@
 					{#each bettype.lines as { name, odds, reward }}
 					<!-- dynamically adjust the size of the cards depending on how many lines there are... -->
 					<!-- note that we don't want the cards to be too big below md -->
-						<div class="card border" class:md:col-span-2={bettype.lines.length == 2} class:md:col-span-4={bettype.lines.length == 1}>
+						<div class="card border" class:md:col-span-2={bettype.lines.length === 2} class:md:col-span-4={bettype.lines.length == 1}>
 							<div class="card-body p-4">
 								<p class="card-title">{name}</p>
 								<div>
