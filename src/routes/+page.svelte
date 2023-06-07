@@ -42,7 +42,7 @@
     }
 
     onMount(async () => {
-        fetchData();
+        await fetchData();
     });
 </script>
 
@@ -82,7 +82,7 @@
                         <label
                                 for="settings-drawer"
                                 class="btn btn-primary btn-square drawer-button lg:hidden"
-                                aria-label="Show filters"><i class="fa-solid fa-sliders"/></label
+                                aria-label="Show filters"><i class="fa-solid fa-sliders"></i></label
                         >
                         <button
                                 class="btn btn-primary btn-square"
@@ -93,7 +93,7 @@
                             {#if loading}
                                 <span class="loading loading-spinner loading-md"></span>
                             {:else if !loading}
-                                <i class="fa-solid fa-refresh"/>
+                                <i class="fa-solid fa-refresh"></i>
                             {/if}
                         </button>
                     </div>
@@ -133,12 +133,12 @@
             </div>
         </div>
         <div class="drawer-side shadow-lg">
-            <label for="settings-drawer" class="drawer-overlay"/>
+            <label for="settings-drawer" class="drawer-overlay"></label>
             <div class="menu px-2 py-2 w-80 bg-base-300 flex flex-col space-y-4">
                 <label
                         for="settings-drawer"
                         class="btn btn-primary drawer-button lg:hidden"
-                        aria-label="Close"><i class="fa-solid fa-xmark"/></label
+                        aria-label="Close"><i class="fa-solid fa-xmark"></i></label
                 >
                 <div class="card shadow-lg">
                     <div class="card-body p-4">

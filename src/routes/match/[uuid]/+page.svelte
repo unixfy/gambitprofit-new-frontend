@@ -26,9 +26,9 @@
     <div class="flex flex-col space-y-4">
         <!-- nav buttons -->
         <div class="flex justify-between">
-            <a class="btn" href="/"> <i class="fa-solid fa-home mr-2"/> Back Home </a>
-            <a class="btn" href={data.match.url} target="_blank" rel="noreferer">
-                <i class="fa-solid fa-arrow-up-right-from-square mr-2"/>
+            <a class="btn" href="/"> <i class="fa-solid fa-home mr-2"></i> Back Home </a>
+            <a class="btn" href={data.match.url} target="_blank" rel="noreferrer">
+                <i class="fa-solid fa-arrow-up-right-from-square mr-2"></i>
                 Open on Gambit
             </a>
         </div>
@@ -48,7 +48,7 @@
             </label>
         </div>
 
-        <div class="divider"/>
+        <div class="divider"></div>
 
         <!-- show alert if match is completed/cutoff passed -->
         {#if data.match.completed || data.match.cutoff_passed}
@@ -83,7 +83,7 @@
         <div class="stats stats-vertical md:stats-horizontal bg-base-200">
             <div class="stat">
                 <div class="stat-figure text-secondary">
-                    <i class="fa-solid fa-money-bill-1-wave fa-2x"/>
+                    <i class="fa-solid fa-money-bill-1-wave fa-2x"></i>
                 </div>
                 <div class="stat-title">Max No-Risk Profit</div>
                 <div class="stat-value text-3xl lg:text-4xl">{data.match.max_no_risk_profit_sb_percentage}%</div>
@@ -91,7 +91,7 @@
 
             <div class="stat">
                 <div class="stat-figure text-secondary">
-                    <i class="fa-solid fa-clock fa-2x"/>
+                    <i class="fa-solid fa-clock fa-2x"></i>
                 </div>
                 <div class="stat-title">Cutoff</div>
                 <div class="stat-value text-3xl lg:text-4xl">{dayjs(data.match.cutoff_datetime).fromNow()}</div>
@@ -100,7 +100,7 @@
 
             <div class="stat">
                 <div class="stat-figure text-secondary">
-                    <i class="fa-solid fa-shuffle fa-2x"/>
+                    <i class="fa-solid fa-shuffle fa-2x"></i>
                 </div>
                 <div class="stat-title">Sport</div>
                 <div class="stat-value text-3xl lg:text-4xl">{data.match.sport}</div>
@@ -118,17 +118,17 @@
                         <!-- dynamically adjust the size of the cards depending on how many lines there are... -->
                         <!-- note that we don't want the cards to be too big below md -->
                         <div class="card border" class:md:col-span-2={bettype.lines.length === 2}
-                             class:md:col-span-4={bettype.lines.length == 1}>
+                             class:md:col-span-4={bettype.lines.length === 1}>
                             <div class="card-body p-4">
                                 <p class="card-title">{name}</p>
                                 <div>
                                     <p class="text-sm opacity-60 font-light">
-                                        <i class="fa-solid fa-clock"/> reward
+                                        <i class="fa-solid fa-clock"></i> reward
                                     </p>
                                     <p>{reward}</p>
                                 </div>
                                 <div>
-                                    <p class="text-sm opacity-60 font-light"><i class="fa-solid fa-clock"/> odds</p>
+                                    <p class="text-sm opacity-60 font-light"><i class="fa-solid fa-clock"></i> odds</p>
                                     <p>{odds}</p>
                                 </div>
                             </div>
@@ -136,7 +136,7 @@
                     {/each}
                 </div>
 
-                <div class="divider"/>
+                <div class="divider"></div>
                 <!-- show info on betting -->
                 <div class="grid grid-flow-row gap-8 my-4">
                     {#each [bettype.no_risk, bettype.med_risk, bettype.high_risk] as riskiness_kind}
@@ -172,11 +172,11 @@
                                     <!-- indicate if this type is recommended -->
                                     {#if riskiness_kind.recommended}
                                         <div class="badge badge-info mt-4 badge-lg">
-                                            Recommended <i class="fa-solid fa-check ml-2"/>
+                                            Recommended <i class="fa-solid fa-check ml-2"></i>
                                         </div>
                                     {:else}
                                         <div class="badge badge-error mt-4 badge-lg">
-                                            Not recommended <i class="fa-solid fa-xmark ml-2"/>
+                                            Not recommended <i class="fa-solid fa-xmark ml-2"></i>
                                         </div>
                                     {/if}
                                 </div>

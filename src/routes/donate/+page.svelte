@@ -6,26 +6,24 @@
 
 <div class="content-wrapper">
 	<h2>
-		<i class="fab fa-paypal" /> PayPal
+		<i class="fab fa-paypal"></i> PayPal
 	</h2>
 	<p>
 		<span class="font-bold">Payment methods:</span> Visa, Discover, American Express, Mastercard, PayPal
 		Cash
 	</p>
 	<!--            PayPal donation button -->
-	<form action="https://www.paypal.com/donate" method="post" target="_blank">
+	<form action="https://www.paypal.com/donate" method="post" target="_blank" rel="noreferrer">
 		<input type="hidden" name="hosted_button_id" value="5D7DTP89LVQSN" />
 		<input
 			type="image"
 			src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif"
-			border="0"
 			name="submit"
 			title="PayPal - The safer, easier way to pay online!"
 			alt="Donate with PayPal button"
 		/>
 		<img
 			alt=""
-			border="0"
 			src="https://www.paypal.com/en_NL/i/scr/pixel.gif"
 			width="1"
 			height="1"
@@ -43,7 +41,7 @@
     </a>
 
 	<h2>
-		<i class="fab fa-bitcoin" /> Coinbase Commerce
+		<i class="fab fa-bitcoin"></i> Coinbase Commerce
 	</h2>
 	<p>
 		<span class="font-bold">Currencies:</span> Bitcoin (BTC), Bitcoin Cash (BCH), Dai (DAI), Dogecoin
@@ -60,7 +58,7 @@
 	</a>
 
 	<h2>
-		<i class="fas fa-money-bill" /> Venmo
+		<i class="fas fa-money-bill"></i> Venmo
 	</h2>
 	<p>
 		<span class="font-bold">Payment methods:</span> Bank account, Visa, Discover, American Express, MasterCard,
@@ -71,7 +69,7 @@
 	</a>
 
 	<h2>
-		<i class="fas fa-dollar-sign" /> CashApp
+		<i class="fas fa-dollar-sign"></i> CashApp
 	</h2>
 	<p>
 		<span class="font-bold">Payment methods:</span> Bank account, Visa, Discover, American Express, MasterCard,

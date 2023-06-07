@@ -24,7 +24,7 @@ export async function load() {
             },
             {
                 "q": "Where do I sign up for Gambit?",
-                "a": "You can sign up for Gambit <a href='https://go.unixfy.net/gambit' rel='noopener'>here</a> (referral link, you will get $1.00 free upon signing up) or <a href='http://app.gambitrewards.com/' rel='noopener'>here</a> (non-referral link). Please note: your Gambit account email must be the same as your Swagbucks account email to receive tokens."
+                "a": "You can sign up for Gambit <a href='https://go.unixfy.net/gambit' rel='noopener'>here</a> (referral link, you will get $1.00 free upon signing up) or <a href='https://app.gambitrewards.com/' rel='noopener'>here</a> (non-referral link). Please note: your Gambit account email must be the same as your Swagbucks account email to receive tokens."
             },
             {
                 "q": "How often is this site updated?",

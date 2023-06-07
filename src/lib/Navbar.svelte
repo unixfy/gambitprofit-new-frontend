@@ -39,7 +39,7 @@
                         <li><a href="/notifications">Notifications</a></li>
                         <li><a href="/help">Help</a></li>
                         <li><a href="https://unixfy.atlassian.net/rest/collectors/1.0/template/form/5086e8b7"
-                               rel="noopener" target="_blank">Feedback</a></li>
+                               rel="noreferrer" target="_blank">Feedback</a></li>
                     </ul>
                 </div>
                 <a class="btn btn-ghost normal-case text-xl" href="/">GambitProfit</a>
@@ -54,7 +54,7 @@
                         <li><a href="/notifications">Notifications</a></li>
                         <li><a href="/help">Help</a></li>
                         <li><a href="https://unixfy.atlassian.net/rest/collectors/1.0/template/form/5086e8b7"
-                               rel="noopener" target="_blank">Feedback</a></li>
+                               rel="noreferrer" target="_blank">Feedback</a></li>
                     </ul>
                     <div class="tooltip tooltip-left" data-tip="Join our Discord server">
                         <a
@@ -62,7 +62,7 @@
                                 aria-label="Join our Discord server"
                                 href="https://go.unixfy.net/hca"
                                 target="_blank"
-                                rel="noopener"
+                                rel="noreferrer"
                         >
                             <i class="fa-brands fa-discord"></i>
                         </a>
