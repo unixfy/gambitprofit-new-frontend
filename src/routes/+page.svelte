@@ -11,6 +11,7 @@
         user_show_cutoff_passed,
         user_datetime
     } from "../stores.js";
+    import MatchCardLoading from "$lib/MatchCardLoading.svelte";
 
     // utilities
     let loading = true;
@@ -87,8 +88,11 @@
                                 class="btn btn-primary btn-square"
                                 aria-label="Refresh data"
                                 on:click={fetchData}
+                                disabled="{loading}"
                         >
-                            {#if !loading}
+                            {#if loading}
+                                <span class="loading loading-spinner loading-md"></span>
+                            {:else if !loading}
                                 <i class="fa-solid fa-refresh"/>
                             {/if}
                         </button>
@@ -96,7 +100,9 @@
                 </div>
                 <div class="grid grid-cols-1 gap-4">
                     {#if loading}
-                        <progress class="progress col-span-3 progress-primary"/>
+                        {#each Array(12) as item}
+                            <MatchCardLoading/>
+                        {/each}
                     {:else}
                         {#each data.results as item}
                             <MatchCard match={item} tokens={$user_tokens}/>
@@ -275,10 +281,12 @@
                     </div>
                 </div>
 
-                <button class="btn btn-secondary btn-block" on:click={fetchData}
-                >Apply settings
-                </button
-                >
+                <button class="btn btn-secondary btn-block" on:click={fetchData} disabled="{loading}">
+                    Apply settings
+                    {#if loading}
+                        <span class="loading loading-spinner loading-md"></span>
+                    {/if}
+                </button>
             </div>
         </div>
     </div>
