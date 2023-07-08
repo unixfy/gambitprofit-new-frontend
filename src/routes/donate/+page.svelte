@@ -30,16 +30,6 @@
 		/>
 	</form>
 
-    <h2>
-        <i class="fas fa-video"></i> SwagIt
-    </h2>
-    <p>
-        <span class="font-bold">Payment methods:</span> SB
-    </p>
-    <a href="https://swagit.page.link/jNmY" rel="noreferrer" target="_blank">
-        <div class="btn btn-primary btn-sm">Donate through SwagIt video</div>
-    </a>
-
 	<h2>
 		<i class="fab fa-bitcoin"></i> Coinbase Commerce
 	</h2>
