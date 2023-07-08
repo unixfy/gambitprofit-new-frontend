@@ -64,7 +64,7 @@
 
 <!--Loading bar when navigating-->
 {#if $navigating}
-    <progress class="progress progress-primary absolute top-0 rounded-none h-4" transition:fade></progress>
+    <span class="loading loading-spinner loading-lg text-secondary fixed top-0 right-0 m-3 z-10" transition:fade></span>
 {/if}
 
 <Navbar/>
