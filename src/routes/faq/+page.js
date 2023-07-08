@@ -7,10 +7,6 @@ export async function load() {
                 "a": "Using this site is COMPLETELY FREE, and it will always stay this way. I pay for all of the costs out of my own pocket. That being said, please donate if you want to help out with the costs of this site."
             },
             {
-                "q": "Why should I trust you?",
-                "a": "I am the most experienced person when it comes to recommending Gambit plays. I’ve been doing this since February 2020. But, don’t take my word for it. Many of my followers use the same method as I do and can report huge earnings as well!"
-            },
-            {
                 "q": "What is the difference between reward and odds?",
                 "a": "Odds are the raw payout from the sportsbook that provides Gambit's data (Intertops). Reward is what Gambit is willing to pay you, the user, for a line. Reward will be lower than odds in most cases because Gambit is interested in making a profit from their operation. It's kind of like a 'vig' except it's charged if you win (not if you lose)."
             },
