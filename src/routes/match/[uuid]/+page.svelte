@@ -117,7 +117,7 @@
                     {#each bettype.lines as {name, odds, reward}}
                         <!-- dynamically adjust the size of the cards depending on how many lines there are... -->
                         <!-- note that we don't want the cards to be too big below md -->
-                        <div class="card border" class:md:col-span-2={bettype.lines.length === 2}
+                        <div class="card border border-base-300" class:md:col-span-2={bettype.lines.length === 2}
                              class:md:col-span-4={bettype.lines.length === 1}>
                             <div class="card-body p-4">
                                 <p class="card-title">{name}</p>
