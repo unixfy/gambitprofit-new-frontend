@@ -26,7 +26,7 @@
 		"svelte": "^4.2.0",
 		"svelte-local-storage-store": "^0.6.0",
 		"svelte-preprocess": "^5.0.4",
-		"tailwindcss": "^3.3.3",
+		"tailwindcss": "^3.3.5",
 		"vite": "^4.4.9"
 	},
 	"type": "module"
